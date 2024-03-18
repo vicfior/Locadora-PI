@@ -2,13 +2,13 @@
 #define FILME_H 1
 
 typedef struct filme {
-    char titulo [100];
-	char codfilme [10];
-	char ator_principal[100];
-	char ator_coadjuvante[100];
-	char diretor [100];
-	int ano;
-	char genero[20];
+char titulo [100];
+char codfilme [10];
+char ator_principal[100];
+char ator_coadjuvante[100];
+char diretor [100];
+int ano;
+char genero[20];
 } Filme;
 
 //funções
