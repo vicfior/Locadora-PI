@@ -99,7 +99,6 @@ void remover_filme(char *caminho) {
 	while (fgets(linha, sizeof(linha), arquivo_entrada)) {
         if (strstr(linha, codigo->codfilme)) {
             encontrou_filme = 1;
-            // Ignora as próximas 6 linhas
             for (int i = 0; i < 0; i++) {
                 if (!fgets(linha, sizeof(linha), arquivo_entrada)) {
                     break; // Fim do arquivo
