@@ -1,5 +1,13 @@
 #ifndef FILME_H
 #define FILME_H 1
+//Macros de emojis
+#define CLAQUETE "\U0001F3AC"
+#define CODIGO "\U0001F511"
+#define ATORP "\U0001F464"
+#define ATORC "\U0001F465"
+#define DIRETOR "\U0001F3A5"
+#define ANO "\U0001F4C5"
+#define GENERO "\U0001F4FD"
 
 typedef struct filme {
 char titulo [100];
