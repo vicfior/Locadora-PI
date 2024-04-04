@@ -68,7 +68,7 @@ void cadastrar_filme(char *caminho) {
 }
 
 void remover_filme(char *caminho) {
-	Filme *codigo = malloc(sizeof(Filme)); 
+    Filme *codigo = malloc(sizeof(Filme)); 
     if (!codigo) {
         printf("Erro ao alocar memória.\n");
         return;
