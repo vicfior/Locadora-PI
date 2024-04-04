@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -16,6 +15,12 @@ void cadastrar_filme(char *caminho) {
 	return;
    }
 
+	printf("%s", CODIGO);
+	printf(" Digite o código: ");
+	fgets(filme->codfilme, sizeof(filme->codfilme), stdin);
+	filme->codfilme[strcspn(filme->codfilme, "\n")] = '\0';
+	fflush(stdin);
+
 	printf("%s", CLAQUETE);
 	printf(" Digite o título: ");
 	//scanf("%s", filme->titulo);
@@ -23,12 +28,6 @@ void cadastrar_filme(char *caminho) {
 	filme->titulo[strcspn(filme->titulo, "\n")] = '\0'; // Remove a quebra de linha do final
 	fflush(stdin);
 	
-	printf("%s", CODIGO);
-	printf(" Digite o código: ");
-	fgets(filme->codfilme, sizeof(filme->codfilme), stdin);
-	filme->codfilme[strcspn(filme->codfilme, "\n")] = '\0';
-	fflush(stdin);
-
 	printf("%s", ATORP);
 	printf(" Digite o ator principal: ");
 	fgets(filme->ator_principal, sizeof(filme->ator_principal), stdin);
@@ -59,7 +58,7 @@ void cadastrar_filme(char *caminho) {
 	filme->genero[strcspn(filme->genero, "\n")] = '\0';
 	fflush(stdin);
 
-	fprintf(output, "\n %s\n %s\n %s\n %s\n %s\n %s\n %s",  filme->titulo, filme->codfilme, filme->ator_principal, filme->ator_coadjuvante, filme->ano, filme->diretor, filme->genero);
+	fprintf(output, "%s\t %s\t %s\t %s\t %s\t %s\t %s", filme->codfilme, filme->titulo, filme->ator_principal, filme->ator_coadjuvante, filme->ano, filme->diretor, filme->genero);
 	fprintf(output, "\n");
 
 	fclose(output);
@@ -68,11 +67,64 @@ void cadastrar_filme(char *caminho) {
 	return;
 }
 
-/*
-void remover_filme(Filme *f, const char *titulo, const char *codfilme, const char *ator_principal, const char *ator_coadjuvante, const char *diretor, int ano, const char *genero) {
+void remover_filme(char *caminho) {
+	Filme *codigo = malloc(sizeof(Filme)); 
+    if (!codigo) {
+        printf("Erro ao alocar memória.\n");
+        return;
+    }
 
+	FILE *arquivo_entrada = fopen(caminho, "r");
+	FILE *arquivo_saida = fopen("temp.txt", "w"); //arquivo temporário para armazenar as linhas que não são o código do filme e nem relativas a ele 
+	
+	if (!arquivo_entrada || !arquivo_saida) {
+		printf("Erro ao abrir os arquivos\n");
+		return;
+	}
+
+	char linha [100];
+	int encontrou_filme = 0;
+
+	printf("Digite o código do filme: ");
+    if (!fgets(codigo->codfilme, sizeof(codigo->codfilme), stdin)) {
+        printf("Erro ao ler o código do filme.\n");
+        fclose(arquivo_entrada);
+        fclose(arquivo_saida);
+        free(codigo);
+        return;
+    }
+    codigo->codfilme[strcspn(codigo->codfilme, "\n")] = '\0';
+
+	//busca linear, pensar em trocar por uma busca binária depois
+	while (fgets(linha, sizeof(linha), arquivo_entrada)) {
+        if (strstr(linha, codigo->codfilme)) {
+            encontrou_filme = 1;
+            // Ignora as próximas 6 linhas
+            for (int i = 0; i < 0; i++) {
+                if (!fgets(linha, sizeof(linha), arquivo_entrada)) {
+                    break; // Fim do arquivo
+                }
+            }
+        } else {
+            fputs(linha, arquivo_saida); // Copia a linha para o arquivo temporário
+        }
+    }
+
+    fclose(arquivo_entrada);
+    fclose(arquivo_saida);
+
+    if (encontrou_filme) {
+        remove(caminho); // Remove o arquivo original
+        rename("temp.txt", caminho); // Renomeia o arquivo temporário
+        printf("Filme removido com sucesso.\n");
+    } else {
+        printf("Filme não encontrado.\n");
+    }
+
+	free(codigo);
 }
 
+/*
 void pesquisar_filme(Filme *f, char* codfilme, char *nome_pesquisado) {
 
 }
