@@ -62,8 +62,6 @@ void cadastrar_filme(char *caminho) {
 	fprintf(output, "\n %s\n %s\n %s\n %s\n %s\n %s\n %s",  filme->titulo, filme->codfilme, filme->ator_principal, filme->ator_coadjuvante, filme->ano, filme->diretor, filme->genero);
 	fprintf(output, "\n");
 
-	//fwrite(filme, sizeof(Filme), 1, output);
-
 	fclose(output);
 	free(filme);
     printf("Informações dos filmes foram salvas no arquivo.\n");
