@@ -3,5 +3,37 @@ A Baleia  fil01  Brendan Fraser  Sadie Sink  2023  Darren Aronofsky  Drama
 Tár  fil02  Cate Blanchet  Nina Hoss  2023  Todd Field  Drama
 
 O Quarto de Jack  fil03  Brie Larson  Jacob Tremblay  2015  Lenny Abrahamson  Drama
+
+Um Olhar do Paraíso   fil04   Saoirse Ronan     Mark Wahlberg   2008   Peter Jackson   Drama
+
+Animais Noturnos   fil05   Amy Adams   Jake Gyllenhaal   2016   Tom Ford   Drama
+
+Sociedade dos Poetas Mortos   fil06   Robin Williams   Ethan Hawke   1989   Peter Weir   Drama
+
+Moonlight: Sob a Luz do Luar   fil07   Ashton Sanders  
+ Mahershala Ali   2016   Barry Jenkins   Drama
+
+Uma Mente Brilhante   fil08   Russel Crowe   Jennifer Connelly   2001
+Ron Howard
+Drama
+
+
  
- 
+Eduardo e Mônica   fil121   Alice Braga   Otávio Augusto   2022   René Sampaio   Nacionais
+
+ Meu passado me condena   fil122   Miá Mello   Inez Viana  
+  2013   Julia Rezende   Nacionais
+
+Minha mãe é uma peça   fil123   Paulo Gustavo   Ingrid Guimarães   2013   André Pellenz   Nacionais
+
+Velozes e Furiosos   fil37   Vin Diesel   Paul Walker   2009   Justin Lin   Ação
+
+Jogos Vorazes   fil38   Jennifer Lawrence   Josh Hutcherson   2012   Gary Ross   Ação
+
+Kill Bill - Vol 1   fil39   Uma Thurman   Lucy Liu   2003   Quentin Tarantino   Ação
+
+John Wick   fil40   Keanu Reeves   Michael Nyqvist   2014   Chad Stahelski   Ação
+
+Duro de Matar   fil41   Bruce Willis   Alan Rickman   1988   John McTiernan   Ação
+
+
