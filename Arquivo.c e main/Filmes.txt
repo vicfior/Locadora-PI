@@ -28,12 +28,47 @@ De volta para o futuro 	fil14 	Michael J. Fox 	Christopher Lloy 	1985 Robert Zem
 
 Matrix  	fil15 	Keanu Reeves 	Laurence Fishburn 	1999 	Lana Wachowski, Lilly Wachowski 	 Ficção científica
 
+A Origem 	fil16 	Leonardo DiCaprio 	Elliot Page 	2008 	Christopher Nolan 	Ficção científica
 
-Eduardo e Mônica   fil121   Alice Braga   Otávio Augusto   2022   René Sampaio   Nacionais
+Interestelar 	fil17 	Matthew McConaughey 	Anne Hathaway 	2016 	Christopher Nolan 	Ficção científica
 
-Meu passado me condena   fil122   Miá Mello   Inez Viana   2013   Julia Rezende   Nacionais
+O exterminador do futuro 	fil18 	Arnold Schwarzenegger 	Linda Hamilton 	1984 		James Cameron 	Ficção científica
 
-Minha mãe é uma peça   fil123   Paulo Gustavo   Ingrid Guimarães   2013   André Pellenz   Nacionais
+ET 	fil19 	Henry Thomas 	Drew Barrymore 	1982  		Steven Spielberg	 Ficção científica
+
+Star Wars - Episódio IV - Uma nova esperança 	fil20 		Mark Hamill  		Carrie Fisher 		1977 		George Lucas 	Ficção científica
+
+Blade Runner   fil21   Harrison Ford  	Rutger Hauer   1982 	Ridley Scott   Ficção científica
+
+Duna   fil22   Timothée Chalamet   Austin Butler   2021 Denis Villeneuve   Ficção científica
+
+A Chegada   fil023   Amy Adams 	Jeremy Renner 	2016 	Denis Villeneuve   Ficção científica
+
+Não se preocupe, Querida   fil24   Florence Pugh   Harry Styles   2022   Olivia Wilde   Ficção científica
+
+Titanic    fil25   Leonardo DiCaprio   Kate Winslet   1997   James Cameron   Romance
+
+Orgulho e Preconceito   fil26   Keira Knightley   Matthew Macfadyen   2005   Joe Wright   Romance
+
+Diário de uma Paixão    fil27   Rachel McAdams   Ryan Gosling   2004   Nick Cassavetes   Romance
+
+A Culpa é das Estrelas   fil28   Shailene Woodley   Ansel Elgort   2014   Josh Boone   Romance
+
+Como Eu Era Antes de Você   fil29   Emilia Clarke   Sam Claflin   2016   Thea Sharrock   Romance
+
+La La Land: Cantando Estações   fil30   Ryan Gosling   Emma Stone    2016   Damien Chazelle   Romance
+
+Um Amor para Recordar   fil31   Mandy Moore   Shane West   2002   Adam Shankman   Romance
+
+Brilho Eterno de uma Mente sem Lembranças   fil32   Jim Carrey   Kate Winslet   2004   Michel Gondry   Romance
+
+O Lado Bom da Vida    fil33   Bradley Cooper   Jennifer Lawrence   2012   David O. Russel   Romance
+
+Questão de Tempo    fil34   Rachel McAdams   Domhall Gleeson   2013   Richard Curtis   Romance
+
+Cartas para Julieta    fil035   Amanda Seyfried   Christopher Egan   2010   Gary Winick   Romance
+
+Simplesmente Acontece   fil36   Lilly Collins   Sam Claflin   2014   Christian Ditter   Romance
 
 Velozes e Furiosos   fil37   Vin Diesel   Paul Walker   2009   Justin Lin   Ação
 
@@ -45,7 +80,19 @@ John Wick   fil40   Keanu Reeves   Michael Nyqvist   2014   Chad Stahelski   Aç
 
 Duro de Matar   fil41   Bruce Willis   Alan Rickman   1988   John McTiernan   Ação
 
-Duro de Matar	 fil41	 Bruce Willis	 Alan Rickman	 1988	 John McTiernan	 Ação
+Os mercenários   fil42   Sylvester Stallone   Jason Statham    2010   Sylvester Stallone   Ação
+
+300   fil43   Gerard Butler   Rodrigo Santoro   2006   Zack Snyder   Ação
+
+Homem de Ferro   fil44   Robert Downey Jr.   Terrence Howard   2008   Jon Favreau   Ação
+
+O Ultimato Bourne   fil45   Matt Damon   Julia Stiles   2007   Paul Greengrass   Ação
+
+Rocky, um lutador   fil46   Sylvester Stallone   Talia Shire   1976   John G. Avildsen   Ação
+
+Rambo   fil47   Sylvester Stallone   Julie Benz   2008   Sylvester Stallone   Ação
+
+Carga Explosiva   fil48   Jason Statham   Shu Qi   2002   Corey Yuen   Ação
 
 Em um bairro em nova york	fil49	 Anthony RamosCorey Hawkins	 2021	 John M. Chu	 Musical
 
@@ -59,6 +106,18 @@ Cantando na Chuva	 fil53	 Gene KellyDonald O’Connor	 1952	 Stanley Donen	 Musi
 
 O fantasma da ópera	 fil54	 Gerard Butler	 Emmy Rossum	 2004	 Joel Shumacher	 Musical
 
+Amor, Sublime Amor   fil55   Ansel Elgort   Rachel Zegler   2021   Steven Spielberg   Musical
+
+A noviça rebelde   fil56   Julie Andrews   Christopher Plummer   1965   Robert Wise   Musical
+
+Caminhos da floresta   fil57   James Corden   Emily Blunt   2014   Rob Marshall   Musical
+
+Rocketman   fil58   Taron Egerton   James Bell   2019   Dexter Fletcher   Musical
+
+Bohemian Rhapsody   fil59   Rami Malek   Gwilym Lee   2018   Bryan Singer   Musical
+
+Mamma Mia!   fil60   Meryl Streep   Pierce Brosnan   2008   Phyllida Lloyd   Musical
+
 Psicose	 fil61	 Anthony Perkins	 Janet Leigh	 1960	 Alfred Hitchcock	 Suspense
 
 O Sexto Sentido	 fil62	 Bruce Willis	 Haley Joel Osment	 1999	 M. Night Shyamalan	 Suspense
@@ -71,5 +130,128 @@ O silêncio dos Inocentes	 fil65	 Jodie Foster	 Anthony Hopkins	 1991	 Jonathan 
 
 Cidade dos Sonhos	 fil66	 Naomi Watts 	Laura Harring	 2001	 David Lynch	 Suspense
 
+O segredo dos seus olhos   fil67   Ricardo Darín   Soledad Villamil   2009   Juan José Campanella   Suspense
 
+A cura   fil68   Dane DeHaan   Jason Isaacs   2016   Gore Verbinski   Suspense
 
+Cabo do Medo   fil69   Robert De Niro   Nick Nolte   1991   Martin Scorsese   Suspense
+
+O lamento   fil70   Kwak Do-won   Hwang Jung-min   2016   Na Hong-jin   Suspense
+
+Millennium: Os homens que não amavam as mulheres   fil71   Daniel Craig   Rooney Mara   2011   David Fincher   Suspense
+
+Onde os Fracos não tem vez   fil72   Josh Brolin   Javier Bardem   2007   Joel Coen   Suspense
+
+A Escolha Perfeita   fil73   Anna Kendrick   Brittany Snow   2012   Jason Moore   Comédia
+
+As branquelas   fil74   Marlon Wayans   Frankie Faison   2004   Keenen Ivory Wayans   Comédia
+
+Amizade Colorida   fil75   Mila Kunis   Richard Jenkins   2011   Will Gluck   Comédia
+
+Barbie    fil76   Margot Robbie   Kate McKinnon   2023   Greta Gerwig   Drama
+
+O auto da compadecida   fil77   Matheus Nachtergaele   Fernanda Montenegro   2000   Guel Arraes   Comédia
+
+Todos menos você   fil78   Sydney Sweeney   Alexandra Shipp   2023   Will Gluck   Comédia
+
+O Mentiroso   fil79   Jim Carrey   Amanda Donohoe   1997   Tom Shadyac   Comédia
+
+O Diabo Veste Prada    fil80   Anne Hathaway   Meryl Streep   2006   David Frankel   Comédia
+
+Pequena Miss Sunshine   fil81   Abigail Breslin   Toni Collette   2006   Valerie Faris   Comédia
+
+Os Caça-Fantasmas   fil82   Bill Murray   Sigourney Weaver   1984   Ivan Reitman   Comédia
+
+Esposa de Mentirinha   fil83   Jennifer Aniston   Bailee Madison   2011   Dennis Dugan   Comédia
+
+Curtindo a Vida Adoidado   fil84   Matthew Broderick   Jennifer Grey   1986   John Hughes   Comédia
+
+Procurando Nemo   fil85   Alexander Gould   Brad Garrett   2003   Andrew Stanton   Infantil
+
+O Rei Leão   fil86   Matthew Broderick   Moira Kelly   1994   Roger Allers   Infantil
+
+Shrek   fil87   Eugenio Derbez   Nora Gutiérrez   2001   Vicky Jenson   Infantil
+
+Frozen: Uma Aventura Congelante   fil88   Idina Menzel   Josh Gad   2013   Jennifer Lee   Infantil
+
+Moana: Um Mar de Aventuras   fil89   Auli'i Cravalho   Rachel House   2016   Ron Clements   Infantil
+
+As Meninas Superpoderosas   fil90   E.G. Daily   Tom Kane   2002   Craig McCracken   Infantil
+
+A Bela e a Fera   fil91   Paige O'Hara   Jerry Orbach   1991   Kirk Wise   Infantil
+
+Monstros S.A.    fil92   John Goodman   Mary Gibbs   2001   Darla K. Anderson   Infantil
+
+Mulan   fil93   Ming-Na Wen   Harvey Fierstein    1998   Tony Bancroft   Infantil
+
+Os Incríveis   fil94   Holly Hunter   Jason Lee   2004   John Walker   Infantil
+
+Ratatouille    fil95   Patton Oswalt   Brad Garrett   2007   Brad Bird   Infantil
+
+A Era do Gelo   fil96   John Leguizamo   Tara Strong    2002   Chris Wedge   Infantil
+
+O Exorcista   fil97   Linda Blair   Ellen Burstyn   1973   William Friedkin   Terror
+
+O Iluminado   fil98   Jack Nicholson   Louise Burns   1980   Stanley Kubrick   Terror
+
+A Bruxa   fil99   Anya Taylor-Joy   Ellie Grainger   2015   Robert Eggers   Terror
+
+Atividade Paranormal   fil100   Katie Featherston   Ashley Palmer   2007   Oren Peli   Terror
+
+O Chamado   fil101   Naomi Watts   Martin Henderson   2002   Gore Verbinski   Terror
+
+A Hora do Pesadelo    fil102    Robert Englund   Johnny Depp   1984   Jack Sholder   Terror
+
+Invocação do Mal    fil103   Vera Farmiga   Hayley McFarland   2013   James Wan   Terror
+
+O Bebê de Rosemary   fil104   Mia Farrow   Ruth Gordon   1968   Roman Polanski   Terror
+
+Corra!    fil105   Daniel Kaluuya   Marcus Henderson   2017   Jordan Peele   Terror
+
+Hereditário   fil106   Toni Collete   Gabriel Byrne   2018   Ari Aster   Terror
+
+Pearl   fil107   Mia Goth   Tandi Wright   2022   Ti West   Terror
+
+X   fil108   Mia Goth   Jenna Ortega   2022   Ti West   Terror
+
+Indiana Jones e o Templo da Perdição    fil109   Steven Spielberg   Kate Capshaw   1984   Steven Spielberg   Aventura
+
+De Volta para o Futuro    fil110   Michael J. Fox   Crispin Glover   1985   Robert Zemeckis   Aventura
+
+Avatar   fil111   Sam Worthington   Zoe Saldana   2009   James Cameron   Aventura
+
+Guardiões da Galáxia   fil112   Chris Pratt   Zoe Saldana   2014   James Gunn   Aventura
+
+Doutor Estranho   fil113   Benedict Cumberbatch   Rachel McAdams   2016   Scott Derrickson   Aventura
+
+Jumanji: Bem-vindo à Selva   fil114   Dwayne Johnson   Karen Gillan   2017   Jake Kasdan   Aventura
+
+Pantera Negra   fil115   Chadwick Boseman   Lupita Nyong'o   2018   Ryan Coogler   Aventura
+
+The Batman   fil116   Robert Pattinson   Zoë Kravitz   2022   Matt Reeves   Aventura
+
+Vingadores: Ultimato   fil117   Robert Downey Jr.   Scarlett Johansson   2019   Joe Russo   Aventura
+
+Coringa   fil118   Joaquin Phoenix   Zazie Beetz   2019   Todd Phillips   Aventura
+
+A Princesa Mononoke   fil119   Billy Crudup   Minnie Driver   1997   Hayao Miyazak   Aventura
+
+Piratas do Caribe: A Maldição do Pérola Negra   fil120   Johnny Depp   Keira Knightley   2003   Gore Verbinski   Aventura
+
+Eduardo e Mônica   fil121   Alice Braga   Otávio Augusto   2022   René Sampaio   Nacionais
+
+Meu passado me condena   fil122   Miá Mello   Inez Viana   2013   Julia Rezende   Nacionais
+
+Minha mãe é uma peça   fil123   Paulo Gustavo   Ingrid Guimarães   2013   André Pellenz   Nacionais
+
+Faroeste Caboclo    fil124   Fabrício Boliveira   Felipe Abib   2013   René Sampaio   Nacionais
+
+Minha irmã e Eu   fil125   Tatá Werneck   Leandro Lima   2023   Susana Garcia   Nacionais
+
+Se eu fosse você    fil126   Gloria Pires   Lavínia Vlasak   2006   Daniel Filho   Nacionais
+
+De pernas pro ar    fil127   Ingrid Guimarães   Bruno Garcia   2010   Roberto Santucci   Nacionais
+
+Cidade de Deus    fil128   Alexandre Rodrigues   Alice Braga   2002   Fernando Meirelles   Nacionais
+
+Bacurau    fil129   Sonia Braga   Barbara Colen   2019   Juliano Dornelles   Nacionais
