@@ -10,19 +10,28 @@ Animais Noturnos   fil05   Amy Adams   Jake Gyllenhaal   2016   Tom Ford   Drama
 
 Sociedade dos Poetas Mortos   fil06   Robin Williams   Ethan Hawke   1989   Peter Weir   Drama
 
-Moonlight: Sob a Luz do Luar   fil07   Ashton Sanders  
- Mahershala Ali   2016   Barry Jenkins   Drama
+Moonlight: Sob a Luz do Luar   fil07   Ashton Sanders   Mahershala Ali   2016   Barry Jenkins   Drama
 
-Uma Mente Brilhante   fil08   Russel Crowe   Jennifer Connelly   2001
-Ron Howard
-Drama
+Uma Mente Brilhante	 fil08	 Russel Crowe		 Jennifer Connelly	 2001	 Ron Howard	 Drama
+
+Green Book: O Guia	 fil09	 Mahershala Ali	 Viggo Mortensen	 2018	 Peter Farrelly	 Drama
+
+Para Sempre Alice	 fil10	 Juliane Moore	 Kristen Stewart	 2014	 Richard Glatzer e Wash Westmoreland	 Drama
+
+Forrest Gump - O Contador de Histórias	 fil011 	Tom Hanks	  Robin Wright 	1994 	Robert Zemeckis 	Drama
+
+A Rede Social 	fil12 	Jesse Eisenberg 	Andrew Garfield 	2010 	David Fincher 	Drama
+
+Tudo em Todo Lugar ao Mesmo Tempo 	fil13 	Michelle Yeoh 	Ke Huy Quan 	2022   Daniel Kwan   Daniel Scheinert 	Ficção científica
+
+De volta para o futuro 	fil14 	Michael J. Fox 	Christopher Lloy 	1985 Robert Zemeckis 	Ficção científica
+
+Matrix  	fil15 	Keanu Reeves 	Laurence Fishburn 	1999 	Lana Wachowski, Lilly Wachowski 	 Ficção científica
 
 
- 
 Eduardo e Mônica   fil121   Alice Braga   Otávio Augusto   2022   René Sampaio   Nacionais
 
- Meu passado me condena   fil122   Miá Mello   Inez Viana  
-  2013   Julia Rezende   Nacionais
+Meu passado me condena   fil122   Miá Mello   Inez Viana   2013   Julia Rezende   Nacionais
 
 Minha mãe é uma peça   fil123   Paulo Gustavo   Ingrid Guimarães   2013   André Pellenz   Nacionais
 
@@ -35,5 +44,32 @@ Kill Bill - Vol 1   fil39   Uma Thurman   Lucy Liu   2003   Quentin Tarantino   
 John Wick   fil40   Keanu Reeves   Michael Nyqvist   2014   Chad Stahelski   Ação
 
 Duro de Matar   fil41   Bruce Willis   Alan Rickman   1988   John McTiernan   Ação
+
+Duro de Matar	 fil41	 Bruce Willis	 Alan Rickman	 1988	 John McTiernan	 Ação
+
+Em um bairro em nova york	fil49	 Anthony RamosCorey Hawkins	 2021	 John M. Chu	 Musical
+
+Hairspray - Em busca da Fama	 fil50	 Nikki Blosnky	 John Travolta	 2007	 Adam Shankman	 Musical
+
+Grease - Nos Tempos da Brilhantina	 fil51	 John Travolta	 Olivia Newton-John	 1978	 Randal Kleiser	 Musical
+
+Chicago	 fil52	 Renée Zellweger	 Catherine Zeta-Jones	 2002	 Rob Marshall	 Musical
+
+Cantando na Chuva	 fil53	 Gene KellyDonald O’Connor	 1952	 Stanley Donen	 Musical
+
+O fantasma da ópera	 fil54	 Gerard Butler	 Emmy Rossum	 2004	 Joel Shumacher	 Musical
+
+Psicose	 fil61	 Anthony Perkins	 Janet Leigh	 1960	 Alfred Hitchcock	 Suspense
+
+O Sexto Sentido	 fil62	 Bruce Willis	 Haley Joel Osment	 1999	 M. Night Shyamalan	 Suspense
+
+Seven: Os sete crimes capitais	 fil63	 Morgan Freeman	 Brad Pitt	 1995	 David Fincher	 Suspense
+
+Amnésia	 fil64	 Guy PearceCarrie-Anne Moss	 2000	 Christopher Nolan	 Suspense
+
+O silêncio dos Inocentes	 fil65	 Jodie Foster	 Anthony Hopkins	 1991	 Jonathan Demme	 Suspense
+
+Cidade dos Sonhos	 fil66	 Naomi Watts 	Laura Harring	 2001	 David Lynch	 Suspense
+
 
 
