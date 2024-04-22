@@ -18,13 +18,13 @@ enum propriedades_cliente {
 };
 
 typedef struct consultacli {
-    char *prop[7]; // Corrigido aqui
+    char *prop[7]; 
     enum propriedades_cliente propriedade;
 	char valor[100];
 } Consultacli;
 
 typedef struct lista_pessoa {
-    no_pessoa *inicio; // Corrigido aqui
+    no_pessoa *inicio; 
     struct consultacli Consultacli;
 } ListaPessoa;
 
@@ -88,7 +88,7 @@ void cadastrar_cliente (char *caminho) {
     p->data_nascimento[strcspn(p->data_nascimento, "\n")] = '\0';
     fflush(stdin);
 
-    fprintf(output, "\n%s\n %s\n %s\n %s\n %s",p->nome,p->codcliente,p->telefone,p->endereco,p->data_nascimento);
+    fprintf(output, "\n%s\n%s\n%s\n%s\n%s",p->nome,p->codcliente,p->telefone,p->endereco,p->data_nascimento);
     fprintf(output, "\n");
 
     fclose(output);
@@ -155,3 +155,89 @@ void remover_pessoa (char *caminho) {
     free(p);
 }
 
+void pesquisar_cliente(char *caminho) {
+    Consultacli consultacli;
+    consultacli.propriedade = codcliente;
+
+	printf("----------------------------------------------------------------------------------------------------------------\n");
+    printf("                                                  pesquisa de clientes                                          \n");
+    printf("----------------------------------------------------------------------------------------------------------------\n");
+
+    // Solicitar ao usuário o gênero desejado
+    printf("Digite o gênero que deseja buscar: ");
+    fgets(consultacli.valor, sizeof(consultacli.valor), stdin);
+    consultacli.valor[strcspn(consultacli.valor, "\n")] = '\0';
+
+    printf("Buscando cliente pelo código: %s\n\n", consultacli.valor); // Mensagem de depuração
+
+    FILE *input = fopen(caminho, "r");
+    if (!input) {
+        printf("Erro ao abrir o arquivo.\n");
+        return;
+    }
+
+    char linha[1000];
+    Pessoa p;
+    int encontrou_pessoa = 0; // Variável para verificar se pelo menos uma pessoa foi encontrada
+
+    while (fgets(linha, sizeof(linha), input)) {
+        if (strcmp(linha, "\n") == 0) {
+            continue; // Ignorar linhas em branco
+        }
+
+        sscanf(linha, "%[^\n]",p.codcliente);
+
+        // Ler as outras propriedades do cliente
+        fgets(p.nome, sizeof(p.nome), input);
+        fgets(p.endereco, sizeof(p.endereco), input);
+        fgets(p.telefone, sizeof(p.telefone), input);
+        fgets(p.data_nascimento, sizeof(p.data_nascimento), input);
+        
+        // Remover a quebra de linha no final de cada propriedade
+        p.nome[strcspn(p.nome, "\n")] = '\0';
+        p.codcliente[strcspn(p.codcliente, "\n")] = '\0';
+        p.endereco[strcspn(p.endereco, "\n")] = '\0';
+        p.telefone[strcspn(p.telefone, "\n")] = '\0';
+        p.data_nascimento[strcspn(p.data_nascimento, "\n")] = '\0';
+
+        // Verificar se a pessoa possui o código desejado
+        if (strcmp(p.codcliente,consultacli.valor) == 0) {
+            encontrou_pessoa = 1; // Marcando que pelo menos uma pessoa foi encontrada
+            printf("Nome: %s\n", p.nome);
+            printf("Código do cliente: %s\n", p.codcliente);
+            printf("Telefone: %s\n", p.telefone);
+            printf("Endereço: %s\n", p.endereco);
+            printf("Data de nascimento: %s\n", p.data_nascimento);
+            printf("\n");
+        }
+    }
+    if (!encontrou_pessoa) {
+        printf("Nenhuma pessoa encontrada com o código especificado.\n");
+    }
+
+    fclose(input);
+}
+
+void listar_clientes(char *caminho) 
+{
+		Pessoa *p = malloc(sizeof(Pessoa));
+		if (!p) {
+			printf("Erro ao alocar memória.\n");
+			return;
+		}
+		FILE *input = fopen(caminho, "r");
+		if (!input) {
+			printf("Erro ao abrir o arquivo.\n");
+			return;
+		}
+		printf("----------------------------------------------------------------------------------------------------------------\n");
+		printf("                                                  Listando todos os clientes                                    \n");
+		printf("----------------------------------------------------------------------------------------------------------------\n");
+		char linha [1000];
+		while (fgets(linha, sizeof(linha), input)) {
+			printf("%s", linha);
+		}
+		fclose(input);
+		free(p);
+		return;
+	}
