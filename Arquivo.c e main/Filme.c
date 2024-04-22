@@ -447,6 +447,7 @@ void listar_ator(char *caminho) {
     fclose(input);
 }
 
+
 void listar_filme(char *caminho) {
 	int escolha;
 	printf("----------------------------------------------------------------------------------------------------------------\n");
@@ -458,8 +459,8 @@ void listar_filme(char *caminho) {
 	printf("2 - Lista por gênero\n");
 	printf("3 - Lista por ator principal\n");
 	printf("4 - Listar por ano\n");
-	printf("Voltar\n");
-	printf("Sair\n");
+	printf("5 - Voltar\n");
+	printf("6 - Sair\n");
 	printf("Opção: ");
 	scanf("%d", &escolha);
 
@@ -478,50 +479,15 @@ void listar_filme(char *caminho) {
 		listar_ano(caminho);
 		break;
 	case 5:
-		/* code */
+		
 		break;
 	case 6:
-		/* code */
+		printf("Obrigado por utilizar o sistema ");
+		printf("%s", ADEUS);
+		exit(0);
 		break;
 	default:
 		printf("Opção inválida.\n");
 		return;
 	}
 }
-
-
-/*
-void listar_atorp(char *caminho) {
-	
-}
-
-void criar_lista_filmes(struct consulta consulta, char *caminho) {
-    struct lista_filme *lista = malloc(sizeof(struct lista_filme));
-    if (!lista) {
-        printf("Erro ao alocar memória.\n");
-        return;
-    }
-    lista->inicio = NULL;
-    lista->consulta = consulta;
-
-    FILE *input = fopen(caminho, "r");
-    if (!input) {
-        printf("Erro ao abrir o arquivo.\n");
-        return;
-    }
-    char linha[1000];
-    Filme f;
-    while (fgets(linha, sizeof(linha), input)) {
-        if (lista->consulta.propriedades[codfilme] == codfilme) {
-
-        }
-    }
-    fclose(input);
-    return;
-}
-*/
-
-/*
-void alterar_filme(Filme *f, char *codfilme, char *novo_titulo, char *novo_ator_principal, char *novo_ator_coadjuvante, char *novo_diretor, int novo_ano, char *novo_genero) {
-
-}*/
