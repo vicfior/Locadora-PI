@@ -20,6 +20,10 @@ typedef struct filme {
 	char genero[20];
 } Filme;
 
+typedef struct no_filme NoFilme;
+typedef struct lista_filme ListaFilme;
+typedef struct consulta Consulta;
+
 //funções
 Filme* filme_criar();
 void cadastrar_filme(char *caminho);
@@ -28,46 +32,13 @@ void pesquisar_filme(char *caminho);
 void listar_filme();
 void listar_tudo(char *caminho);
 void listar_genero(char *caminho);
-void listar_atorp(char *caminho);
+void listar_ator(char *caminho);
+void listar_ano(char *caminho);
 void alterar_filme(Filme *f, char *codfilme, char *novo_titulo, char *novo_ator_principal, char *novo_ator_coadjuvante, char *novo_diretor, int novo_ano, char *novo_genero);
+void criar_lista_filmes(char *caminho);
+void limpar_buffer();
+void remover_quebra_de_linha(char *str);
+
 
 #endif
-// .h
-typedef struct no_filme NoFilme;
-// .c
-typedef struct no_filme {
-	Filme filme;
-	struct NoFilme *prox;
-} no_filme;
 
-// .h
-typedef struct lista_filme ListaFilme ;
-// .c
-
-enum propriedades_filme {
-	titulo,
-	codfilme,
-	ator_principal,
-	ator_coadjuvante,
-	diretor,
-	ano,
-	genero
-};
-
-struct consulta {
-	char *propriedades[] = {
-		"titulo",
-		"codfilme",
-		"ator_principal",
-		"ator_coadjuvante",
-		"diretor",
-		"ano",
-		"genero"
-	};
-	enum propriedades_filme propriedade;
-};
-
-typedef struct lista_filme {
-	NoFilme *inicio;
-	struct consulta consulta;
-} lista_filme;
