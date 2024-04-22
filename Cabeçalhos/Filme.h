@@ -8,6 +8,7 @@
 #define DIRETOR "\U0001F3A5"
 #define ANO "\U0001F4C5"
 #define GENERO "\U0001F4FD"
+#define ADEUS "\U0001F44B"
 
 
 typedef struct filme {
