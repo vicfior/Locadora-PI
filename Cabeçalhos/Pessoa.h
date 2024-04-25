@@ -6,6 +6,8 @@
 #define ENDERECO ""
 #define TELEFONE ""
 #define DATA "\U0001F4C5"
+#define ADEUS "\U0001F44B"
+
 
 typedef struct pessoa {
     char nome[100];
@@ -29,7 +31,14 @@ void remover_pessoa (char *caminho);
 void remover_funcionario(Pessoa *funcionario);
 void listar_clientes(char *caminho);
 void pesquisar_cliente(char *caminho);
-void pesquisar_funcionario(Pessoa *funcionario, char *codfuncionario, char *nome_pesquisado);
-void alterar_cliente(Pessoa *cliente, char *codcliente, int novo_telefone, char *novo_endereco);
-void alterar_funcionario(Pessoa *funcionario, char *codfuncionario, int novo_telefone, char novo_endereco[]);
+void pesquisar_funcionario(char *caminho);
+void alterar_cliente(char *caminho, char *codcliente, int novo_telefone, char *novo_endereco);
+void alterar_funcionario(char *caminho, char *codfuncionario, int novo_telefone, char novo_endereco[]);
+
+//Usando lista encadeada
+ListaPessoa* lista_pessoa_cria();
+void lista_pessoa_inserir(ListaPessoa *lista, Pessoa cliente);
+void lista_pessoa_libera(ListaPessoa *lista);
+void limpar_buffer();
+
 #endif // PESSOA_H
