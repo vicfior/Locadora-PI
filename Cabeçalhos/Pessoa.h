@@ -10,35 +10,32 @@
 
 
 typedef struct pessoa {
-    char nome[100];
+    char nome[200];
     char codcliente [10];
     char codfuncionario [10];
     char codadmin[10];
-    char telefone [15]; 
-    char endereco[150]; 
-    char data_nascimento[11];
+    char telefone [20]; 
+    char endereco[400]; 
+    char data_nascimento[15];
+    struct pessoa *proximo;
 }Pessoa;
 
-typedef struct no_pessoa no_pessoa;
-typedef struct lista_pessoa ListaPessoa;
+typedef struct lista Lista;
+struct lista{
+    Pessoa *inicio;
+    Pessoa *fim;
+};
 typedef struct consultacli Consultacli;
 
 //Funções para cadastrar os clientes e funcionários
-Pessoa* pessoa_cria(); 
-void cadastrar_cliente( char *caminho);
-void cadastrar_funcionario(Pessoa *funcionario);
-void remover_pessoa (char *caminho);
-void remover_funcionario(Pessoa *funcionario);
-void listar_clientes(char *caminho);
-void pesquisar_cliente(char *caminho);
-void pesquisar_funcionario(char *caminho);
-void alterar_cliente(char *caminho, char *codcliente, int novo_telefone, char *novo_endereco);
-void alterar_funcionario(char *caminho, char *codfuncionario, int novo_telefone, char novo_endereco[]);
-
-//Usando lista encadeada
-ListaPessoa* lista_pessoa_cria();
-void lista_pessoa_inserir(ListaPessoa *lista, Pessoa cliente);
-void lista_pessoa_libera(ListaPessoa *lista);
-void limpar_buffer();
-
+Lista *lista_cria();
+Pessoa *pessoa_cria();
+void pessoa_libera(Pessoa *pessoa);
+void pessoa_cadastra(Lista *lista);
+void inserir_pessoa(Lista *lista);
+void listar_clientes(Lista *lista);
+void remover_pessoa(Lista *lista);
+void pesquisar_pessoa(Lista *lista);
+void alterar_clientes(const char *codigo_cliente);
+void menu_clientes();
 #endif // PESSOA_H
