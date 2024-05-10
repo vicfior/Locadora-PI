@@ -1,11 +1,36 @@
-José Arnaldo
 cli01
-61986573452
-SGAS Quadra 613, Via L2 Sul - Asa Sul, Brasília
-23/09/1987
+Fabiano Zava Spilman
+(61) 98571-4137
+Quadra QNP 10 Conjunto K Ceilândia Sul (Ceilândia)
+04/06/1943
 
-Cleide Mara
 cli02
-6176549876
-SGAS Quadra 412, Via L2 Sul - Asa Sul, Brasília
-09/07/1965
+Elaine Paulino Cordeiro
+(61) 99465-1157
+Quadra SQB 1 Bloco D Guará I
+15/03/1988
+
+cli03
+Catia Firmino Dantas
+(61) 98033-5741
+Quadra EQ 23/26 Setor Oeste (Gama) 
+09/07/2003
+
+cli04
+Ana Caroline Bernardes Alves
+(61) 96934-1814
+Quadra 8 Bloco 10 Sobradinho
+01/03/1980
+
+cli05
+Ana Beatriz Albergaria de Oliveira
+(61) 96898-4737
+Quadra 3 Conjunto 8 Lote 1
+07/03/1992
+
+cli06
+Maria Cristina Queiroga Bragança
+(61) 98433-5895
+Avenida Central Bloco 211 Núcleo Bandeirante
+16/12/1955
+
