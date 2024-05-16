@@ -10,36 +10,36 @@
 #define GENERO "\U0001F4FD"
 #define ADEUS "\U0001F44B"
 
-
 typedef struct filme {
-    char titulo [100];
-	char codfilme [10];
-	char ator_principal[100];
-	char ator_coadjuvante[100];
-	char diretor [100];
+    char titulo [200];
+	char codfilme [20];
+	char ator_principal[200];
+	char ator_coadjuvante[200];
+	char diretor [200];
 	char ano[10];
 	char genero[20];
+    struct filme *proximo;
 } Filme;
 
-typedef struct no_filme NoFilme;
-typedef struct lista_filme ListaFilme;
-typedef struct consulta Consulta;
+typedef struct lista_filme Lista_filme;
+struct lista_filme{
+    Filme *inicio;
+    Filme *fim;
+};
 
-//funções
-Filme* filme_criar();
-void cadastrar_filme(char *caminho);
-void remover_filme(char *caminho);
-void pesquisar_filme(char *caminho);
-void listar_filme();
-void listar_tudo(char *caminho);
-void listar_genero(char *caminho);
-void listar_ator(char *caminho);
-void listar_ano(char *caminho);
-void alterar_filme(Filme *f, char *codfilme, char *novo_titulo, char *novo_ator_principal, char *novo_ator_coadjuvante, char *novo_diretor, int novo_ano, char *novo_genero);
-void criar_lista_filmes(char *caminho);
+typedef struct consulta {
+	char *propriedades[7]; // Corrigido aqui
+	char valor[100];
+} Consulta;
+
 void limpar_buffer();
-void remover_quebra_de_linha(char *str);
+Lista_filme *lista_cria_filme();
+Filme *filme_cria();
+void filme_cadastra(Lista_filme *listaf);
+void filme_libera(Filme *filme);
+void listar_filme();
+void remover_filme(Lista_filme *listaf);
+void pesquisar_filme(Lista_filme *listaf);
+void menu_filmes();
 
-
-#endif
-
+#endif 
