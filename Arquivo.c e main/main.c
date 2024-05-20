@@ -35,7 +35,7 @@ int main() {
         menu_clientes();
         break;
     case 4: 
-        //menu_operacao();
+        menu_operacao();
         break;
     case 0: 
         printf(".:*☆ Obrigado por visitar nossa locadora .:*☆ ");
@@ -46,6 +46,67 @@ int main() {
         printf("Opção inválida.\n");
 		return 0;
     } 
+}
+
+void menu_operacao() {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+    Locacao *locacao = locacao_cria();
+    Lista *lista = lista_cria();
+    char codcliente[10]; 
+    char codfilme[10];
+    char codlocacao[10];
+    int opcao = 1;
+    printf("❁----------------------------------------------------------------------------------------------------------------------❁\n");
+    printf("❁                                                 MENU DE OPERAÇÕES                                                   ❁\n");
+    printf("❁----------------------------------------------------------------------------------------------------------------------❁\n");
+    while (opcao != 0) {
+        printf("\n❁ -------------------- ❁ Escolha sua opção ❁ ---------------------------- ❁");
+        printf("\n❁                      1 - ALUGAR FILME                                   ❁");
+        printf("\n❁                      2 - EXIBIR LOCACOES                                ❁");
+        printf("\n❁                      3 - PESQUISAR LOCACOES                             ❁");
+        printf("\n❁                      4 - PESQUISAR HISTÓRICO DO CLIENTE                 ❁");
+        printf("\n❁                      5 - DEVOLVER FILME                                 ❁");
+        printf("\n❁                      6 - VOLTAR AO MENU PRINCIPAL                       ❁");
+        printf("\n❁                      0 - SAIR                                           ❁");
+        printf("\n❁ -------------------- ❁ Escolha sua opção ❁ ---------------------------- ❁");
+        printf("\nOpção: ");
+        scanf("%d", &opcao);
+        limpar_buffer();
+        switch (opcao) {
+            case 1:
+                alugar_filme();
+                break;
+            case 2:
+                exibir_locacoes();
+                break;
+            case 3:
+                pesquisar_locacao();
+                break;
+            case 4:
+                pesquisar_historico();
+                break;
+            case 5:
+                printf("Digite o código de locação: ");
+                fgets(codlocacao, sizeof(codlocacao), stdin);
+                codlocacao[strcspn(codlocacao, "\n")] = '\0';  
+                devolver_filme(codlocacao);
+                printf("Removendo locação %s\n", codlocacao);
+                remover_locacao(codlocacao);
+                printf("Filme %s devolvido com sucesso e disponível para nova locação!\n", codlocacao);
+                break;
+            case 6:
+                main();
+                break;
+            case 0:
+                printf(".:*☆ Obrigado por visitar nossa locadora .:*☆ ");
+                printf("%s", ADEUS);
+                exit(0);
+                break;
+            default:
+                printf("Opção inválida.\n");
+                break;
+        }
+    }
 }
 
 void menu_filmes() {
