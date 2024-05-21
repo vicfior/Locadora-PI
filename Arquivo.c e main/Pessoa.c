@@ -3,6 +3,8 @@
 #include <string.h>
 #include <locale.h>
 #include "Pessoa.h"
+#include "Locacao.h"
+
 
 void limpar_buffer() {
     int c;
@@ -33,18 +35,18 @@ void pessoa_libera(Pessoa *pessoa) {
    }
 }
 
-void pessoa_cadastra(Lista *lista) {
+int pessoa_cadastra(Lista *lista) {
 
     FILE *arquivo = fopen("Clientes.txt", "a");
     if (arquivo == NULL) {
         printf("Erro ao abrir o arquivo.\n");
-        return;
+        return 0;
     }
 
     Pessoa *pessoa = malloc(sizeof(Pessoa));
     if (pessoa == NULL) {
         printf("Erro ao alocar memória.\n");
-        return;
+        return 0;
     }
 
     printf("Digite o código do cliente: ");
@@ -89,6 +91,8 @@ void pessoa_cadastra(Lista *lista) {
     fprintf(arquivo, "%s\n", pessoa->data_nascimento);
     fprintf(arquivo, "\n");
     fclose(arquivo);
+
+    return 1;
 }
 
 void listar_clientes(Lista *lista) {
@@ -304,3 +308,5 @@ void alterar_clientes(const char *codigo_cliente) {
     rename("Clientes_temp.txt", "Clientes.txt");
     printf("Dados atualizados com sucesso!\n");
 }
+
+    
