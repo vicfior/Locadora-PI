@@ -11,6 +11,8 @@ typedef struct locacao {
     char data_locacao[20];
     char data_devolucao[20];
     double valorpago;
+    char codreserva[20];
+    char data_reserva[20];
     struct locacao *proximo;
 } Locacao;
 
@@ -32,7 +34,11 @@ void pesquisar_locacao();
 double aplicar_multa();
 double receber_pagamento();
 void devolver_filme(char *codlocacao);
-void listar_historico();
+void pesquisar_historico();
 void remover_locacao(char *codlocacao);
+void reservar_filme();
+void menu_operacao();
+void remover_reserva();
+int pesquisar_reserva();
 
 #endif
