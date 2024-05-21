@@ -31,7 +31,7 @@ typedef struct consultacli Consultacli;
 Lista *lista_cria();
 Pessoa *pessoa_cria();
 void pessoa_libera(Pessoa *pessoa);
-void pessoa_cadastra(Lista *lista);
+int pessoa_cadastra(Lista *lista);
 void inserir_pessoa(Lista *lista);
 void listar_clientes(Lista *lista);
 void remover_pessoa(Lista *lista);
