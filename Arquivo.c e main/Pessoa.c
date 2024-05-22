@@ -96,9 +96,6 @@ int pessoa_cadastra(Lista *lista) {
 }
 
 void listar_clientes(Lista *lista) {
-    if (lista->inicio == NULL) {
-        printf("Não há clientes cadastrados.\n");
-    } else {
         Pessoa *pessoa = lista->inicio;
         while (pessoa != NULL) {
             printf("Código do cliente: %s\n", pessoa->codcliente);
@@ -109,7 +106,6 @@ void listar_clientes(Lista *lista) {
             printf("\n");
             pessoa = pessoa->proximo;
         }
-    }
     FILE *arquivo = fopen("Clientes.txt", "r");
     if (arquivo == NULL) {
         printf("Erro ao abrir o arquivo.\n");
@@ -167,7 +163,8 @@ void remover_pessoa(Lista *lista) {
 void pesquisar_pessoa(Lista *lista) {
     char codigo[20];
     char linha[300];
-    printf("Digite o código do cliente: ");
+    printf("Digite o código do cliente: \n");
+    printf(">> ");
     fgets(codigo, sizeof(codigo), stdin);
     codigo[strcspn(codigo, "\n")] = '\0'; 
 
@@ -195,11 +192,14 @@ void pesquisar_pessoa(Lista *lista) {
 
         if (strcmp(cliente.codcliente, codigo) == 0) {
             printf("Cliente encontrado!\n");
-            printf("Código: %s\n", cliente.codcliente);
-            printf("Nome: %s\n", cliente.nome);
-            printf("Telefone: %s\n", cliente.telefone);
-            printf("Endereço: %s\n", cliente.endereco);
-            printf("Data de nascimento: %s\n", cliente.data_nascimento);
+            printf("\n");
+            printf("------------------ Informações do cliente %s -----------------------------\n", cliente.codcliente);
+            printf("                   Código: %s\n", cliente.codcliente);
+            printf("                   Nome: %s\n", cliente.nome);
+            printf("                   Telefone: %s\n", cliente.telefone);
+            printf("                   Endereço: %s\n", cliente.endereco);
+            printf("                   Data de nascimento: %s\n", cliente.data_nascimento);
+            printf("------------------------------------------------------------------------------\n");
             encontrado = 1;
             break;
             }
