@@ -149,6 +149,7 @@ int filme_existe(char* codfilme) {
     }
 }
 
+
 void alugar_filme() {
     Locacao *locacao = locacao_cria();
     char codfilme[20];
@@ -156,6 +157,8 @@ void alugar_filme() {
     char data_locacao[20];
     char data_devolucao[20];
     char linha[300];
+    int a;
+    int b;
 
     FILE *arquivo = fopen("Locacao.txt", "a");
     if (arquivo == NULL) {
@@ -192,18 +195,29 @@ void alugar_filme() {
         fclose(arquivo);
         } else {
             printf("Filme indisponível para locação!\n");
-            printf("Verifique se o filme está reservado!\n");
-            pesquisar_reserva();
-            if (pesquisar_reserva() == 1) {
-                int opcao;
-                printf("Filme reservado a mais de 3 dias? 1 - Sim, 2 - Não\n\n");
-                scanf("%d", &opcao);
-                if (opcao == 1) {
-                    remover_reserva();
-                } else if (opcao == 2) {
-                    printf("Filme disponível para locação!\n");
+            printf("Verificar se o filme está reservado?\n");
+                printf("Digite 1 para SIM e 2 para voltar ao menu\n");
+                printf("Opção: ");
+                scanf ("%d", &a);
+                if (a == 1) {
+                    if (pesquisar_reserva() == 1) {
+                    printf("Filme reservado a mais de 3 dias?\n");
+                    printf("Digite 1 para SIM e 2 para NÃO\n");
+                    printf("Opção: ");
+                    scanf("%d", &b);
+                        if (b == 1) {
+                            remover_reserva();
+                            printf("Filme devolvido com sucesso e disponível para nova locação!\n");
+                        } else if (b == 2) {
+                            printf("Filme continua indisponível para locação!\n");
+                        }
+                    } else {
+                        printf("Filme continua indisponível para locação\n");
+                        printf("Voltando ao menu\n");
+                    }
+                } else if (a == 2) {
+                    menu_operacao();
                 }
-            }
         }
     } else {
         printf("Erro ao encontrar o filme ou o cliente!\n");
@@ -211,25 +225,32 @@ void alugar_filme() {
 }
 
 int filme_disponivel(char* codfilme) {
-    Locacao *locacao = locacao_cria();
     char linha[300];
     FILE *arquivo = fopen("Locacao.txt", "r");
     if (arquivo == NULL) {
         printf("Erro ao abrir o arquivo.\n");
         return 0;
     } 
-    FILE *arquivo2 = fopen("Reservas.txt", "r");
-    if (arquivo2 == NULL) {
-        printf("Erro ao abrir o arquivo.\n");
-        return 0;
-    }
-    while (fgets(linha, sizeof(linha), arquivo) && fgets(linha, sizeof(linha), arquivo2) != NULL) {
+    while (fgets(linha, sizeof(linha), arquivo) != NULL) {
         if (strstr(linha, codfilme) != NULL) {
             fclose(arquivo);
             return 0;
         }
     }
+
+    FILE *arquivo2 = fopen("Reservas.txt", "r");
+    if (arquivo2 == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 0;
+    }
+    while (fgets(linha, sizeof(linha), arquivo2) != NULL) {
+        if (strstr(linha, codfilme) != NULL) {
+            fclose(arquivo2);
+            return 0;
+        }
+    }
     fclose(arquivo);
+    fclose(arquivo2);
     return 1;
 }   
 
@@ -329,7 +350,6 @@ void devolver_filme(char *codlocacao) {
             fgets(locacao->data_locacao, sizeof(locacao->data_locacao), arquivo);
             fgets(locacao->data_devolucao, sizeof(locacao->data_devolucao), arquivo);
             
-            // Remove newline characters from the strings
             locacao->codlocacao[strcspn(locacao->codlocacao, "\n")] = '\0';
             locacao->codcliente[strcspn(locacao->codcliente, "\n")] = '\0';
             locacao->codfilme[strcspn(locacao->codfilme, "\n")] = '\0';
@@ -433,7 +453,7 @@ void pesquisar_historico() {
     
     printf("Digite o código do cliente: ");
     fgets(consulta_h.valor, sizeof(consulta_h.valor), stdin);
-    consulta_h.valor[strcspn(consulta_h.valor, "\n")] = '\0';  // Remove newline character
+    consulta_h.valor[strcspn(consulta_h.valor, "\n")] = '\0'; 
     
     printf("Procurando informação do cliente %s\n", consulta_h.valor);
     
@@ -455,11 +475,11 @@ void pesquisar_historico() {
         
         if (strcmp(l.codcliente, consulta_h.valor) == 0) {
             informacao_encontrada = 1;
-            printf("%s\n", l.codcliente);
-            printf("%s\n", l.codlocacao);
-            printf("%s\n", l.codfilme);
-            printf("%s\n", l.data_devolucao);
-            printf("%.2f\n", l.valorpago);
+            printf("Código do cliente: %s\n", l.codcliente);
+            printf("Código da locação: %s\n", l.codlocacao);
+            printf("Código do filme: %s\n", l.codfilme);
+            printf("Data de devolução: %s\n", l.data_devolucao);
+            printf("Valor pago: %.2f\n", l.valorpago);
             printf("\n");
         }
     } 
@@ -474,9 +494,7 @@ void reservar_filme() {
     char codfilme[20];
     char data_reserva[20];
     char codreserva[20];
-    printf ("Digite o código da reserva: ");
-    fgets(codreserva, sizeof(codreserva), stdin);
-    codreserva[strcspn(codreserva, "\n")] = '\0';
+
     printf("Digite o código do cliente: ");
     fgets(codcliente, sizeof(codcliente), stdin);
     codcliente[strcspn(codcliente, "\n")] = '\0'; 
@@ -492,31 +510,30 @@ void reservar_filme() {
         printf("Erro ao abrir o arquivo.\n");
         return;
     }
-
-    fprintf(arquivo, "%s\n", codreserva);
-    fprintf(arquivo, "%s\n", codcliente);
     fprintf(arquivo, "%s\n", codfilme);
+    fprintf(arquivo, "%s\n", codcliente);
     fprintf(arquivo, "%s\n", data_reserva);
     fclose(arquivo);
     printf("Reserva efetuada com sucesso.\n");
+    printf("A reserva ficará ativa por 3 dias, após isso o filme ficará disponível para locação.\n");
 }
 
 void remover_reserva() {
-    char codreserva[20];
-    printf("Digite o código da reserva que deseja remover: ");
-    limpar_buffer_locacao();
-    fgets(codreserva, sizeof(codreserva), stdin);
-    codreserva[strcspn(codreserva, "\n")] = '\0'; 
+    char codfilme[20];
+    printf("Digite o código do filme reservado: ");
+    getchar();
+    fgets(codfilme, sizeof(codfilme), stdin);
+    codfilme[strcspn(codfilme, "\n")] = '\0'; 
     FILE *arquivo = fopen("Reservas.txt", "r");
     if (arquivo == NULL) {
         printf("Erro ao abrir o arquivo.\n");
         return;
     }
     char linha[100];
-    FILE *arquivo_temp = fopen("temp.txt", "w");
-    if (arquivo_temp == NULL) {
+    FILE *arquivo_temp_r = fopen("tempr.txt", "w");
+    if (arquivo_temp_r == NULL) {
         printf("Erro ao abrir o arquivo temporário.\n");
-        fclose(arquivo);
+        fclose(arquivo_temp_r);
         return;
     }
     int linhas_lidas = 0;
@@ -524,20 +541,20 @@ void remover_reserva() {
 
     while (fgets(linha, sizeof(linha), arquivo) != NULL) {
         linha[strcspn(linha, "\n")] = '\0';
-        if (strcmp(linha, codreserva) != 0) {
-            fprintf(arquivo_temp, "%s\n", linha); 
+        if (strcmp(linha, codfilme) != 0) {
+            fprintf(arquivo_temp_r, "%s\n", linha); 
         } else {
-            for(int i = 0; i < 4; i++) {
+            for(int i = 0; i < 3; i++) {
                 fgets(linha, sizeof(linha), arquivo);
                 linhas_lidas++;
             }
         }
     }
     fclose(arquivo);
-    fclose(arquivo_temp);
-    if(linhas_escritas == linhas_lidas - 4) {
+    fclose(arquivo_temp_r);
+    if(linhas_escritas == linhas_lidas - 3) {
         remove("Reservas.txt");
-        rename("temp.txt", "Reservas.txt");
+        rename("tempr.txt", "Reservas.txt");
         printf("Reserva removida com sucesso.\n");
     } else {
         printf("Reserva não encontrada.\n");
@@ -545,9 +562,10 @@ void remover_reserva() {
 }
 
 int pesquisar_reserva() {
-    Filme filme;
     Locacao *locacao = locacao_cria();
-    char codreserva[20];
+    Locacao l;
+    Consulta_h consulta_h;
+    char codfilme[20];
     char linha[300];
     int informacao_encontrada = 0;
     FILE *arquivo = fopen("Reservas.txt", "r");
@@ -555,28 +573,51 @@ int pesquisar_reserva() {
         printf("Erro ao abrir o arquivo.\n");
         return 0;
     }
+    printf("Digite o código do filme: ");
+    getchar();
+    fgets(consulta_h.valor , sizeof(consulta_h.valor), stdin);
+    consulta_h.valor[strcspn(consulta_h.valor, "\n")] = '\0';
+    printf ("Procurando informação do filme %s\n", consulta_h.valor);
 
-    printf("Digite o código da reserva: ");
-    fgets(codreserva, sizeof(codreserva), stdin);
-    codreserva[strcspn(codreserva, "\n")] = '\0';
     while (fgets(linha, sizeof(linha), arquivo) != NULL) {
-        if (strstr(linha, codreserva) != NULL) {
+        if(strcmp (linha, "\n") == 0) {
+            continue;
+        } 
+        sscanf(linha, "%s[^\n]", l.codfilme);
+        fgets(l.codcliente, sizeof(l.codcliente), arquivo);
+        fgets(l.data_reserva, sizeof(l.data_reserva), arquivo);
+ 
+        l.codfilme[strcspn(l.codfilme, "\n")] = '\0';
+        l.codcliente[strcspn(l.codcliente, "\n")] = '\0';
+        l.data_reserva[strcspn(l.data_reserva, "\n")] = '\0';
+        
+        if (strcmp(l.codfilme, consulta_h.valor) == 0) {
             informacao_encontrada = 1;
-            strcpy(locacao->codreserva, linha);
-            fgets(locacao->codcliente, sizeof(locacao->codcliente), arquivo);
-            fgets(locacao->codfilme, sizeof(locacao->codfilme), arquivo);
-            fgets(locacao->data_reserva, sizeof(locacao->data_reserva), arquivo);
-            printf("Reserva encontrada!\n");
-            printf("Código da reserva: %s", locacao->codreserva);
-            printf("Código do cliente: %s", locacao->codcliente);
-            printf("Código do filme: %s", locacao->codfilme);
-            printf("Data da reserva: %s", locacao->data_reserva);
+            printf("%s\n", l.codfilme);
+            printf("%s\n", l.codcliente);
+            printf("%s\n", l.data_reserva);
+            printf("\n");
             break;
         }
-    } 
+    }
     if(!informacao_encontrada) {
         printf("Reserva não encontrada!\n");
+        return 0;
     }
     fclose(arquivo);
     return 1;
+}
+
+void exibir_reservas() {
+    Locacao *locacao = locacao_cria();
+    char linha[300];
+    FILE *arquivo = fopen("Reservas.txt", "r");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return;
+    }
+    while (fgets(linha, sizeof(linha), arquivo) != NULL) {
+        printf("%s", linha);
+    }
+    fclose(arquivo);
 }
