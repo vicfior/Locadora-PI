@@ -6,6 +6,36 @@
 #include "Pessoa.h"
 #include "Locacao.h"
 
+#define ANSI_COLOR_RESET "\x1b[0m"
+// Cores ANSI
+#define C_PINK      "\033[38;5;206m"
+#define C_GREEN     "\033[38;5;46m"
+#define C_ORANGE    "\033[38;5;208m"
+#define C_RED       "\033[38;5;196m"
+#define C_YELLOW    "\033[38;5;226m"
+#define C_BLUE      "\033[38;5;27m"
+#define C_MAGENTA   "\033[38;5;201m"
+#define C_WHITE     "\033[38;5;15m"
+#define C_GRAY      "\033[38;5;242m"
+#define C_BLACK     "\033[38;5;16m"
+
+// Fundo ANSI
+#define BG_PINK     "\033[48;5;206m"
+#define BG_GREEN    "\033[48;5;46m"
+#define BG_ORANGE   "\033[48;5;208m"
+#define BG_RED      "\033[48;5;196m"
+#define BG_YELLOW   "\033[48;5;226m"
+#define BG_BLUE     "\033[48;5;27m"
+#define BG_MAGENTA  "\033[48;5;201m"
+#define BG_WHITE    "\033[48;5;15m"
+#define BG_GRAY     "\033[48;5;242m"
+
+// Sublinhados ANSI
+#define UL_WHITE  "\e[4;37m"
+
+// Negrito ANSI
+#define HI_WHITE "\e[0;97m"
+
 int main() {
     setlocale(LC_ALL, "pt_BR.UTF-8");
     int escolha;
