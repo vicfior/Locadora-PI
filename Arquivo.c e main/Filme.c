@@ -160,13 +160,14 @@ void pesquisar_filme(Lista_filme *listaf) {
         printf("Erro ao abrir o arquivo.\n");
         return;
     }
-    printf ("digite o código do filme:");
-    limpar_buffer_filme();
+    printf ("Digite o código do filme \n");
+    printf(">> ");
+    //limpar_buffer_filme();
     fgets(consulta.valor, sizeof(consulta.valor), stdin);
     consulta.valor[strcspn(consulta.valor, "\n")] = '\0';
     Filme filme;
     int encontrou_filme = 0;
-    printf ("código do filme: %s\n", codigo);
+    printf ("Procurando informações do filme de código %s\n", consulta.valor);
 
     while (fgets(linha, sizeof(linha), arquivo)) {
         if (strcmp(linha, "\n") == 0) {
@@ -192,20 +193,20 @@ void pesquisar_filme(Lista_filme *listaf) {
 
         if (strcmp(f.codfilme, consulta.valor) == 0) {
             encontrou_filme = 1;
-            printf("filme encontrado!\n");
+            printf("\nFilme encontrado!\n");
             printf("Código: %s\n", f.codfilme);
-            printf("titulo: %s\n", f.titulo);
-            printf("ator_principal: %s\n", f.ator_principal);
-            printf("ator_coadjuvante: %s\n", f.ator_coadjuvante);
-            printf("ano: %s\n", f.ano);
-            printf("diretor: %s\n", f.diretor);
-            printf("genero: %s\n", f.genero);
+            printf("Título: %s\n", f.titulo);
+            printf("Ator principal: %s\n", f.ator_principal);
+            printf("Ator coadjuvante: %s\n", f.ator_coadjuvante);
+            printf("Ano: %s\n", f.ano);
+            printf("Diretor: %s\n", f.diretor);
+            printf("Gênero: %s\n", f.genero);
             break;
                  }
             }
 
         if (!encontrou_filme) {
-            printf("filme não encontrado.\n");
+            printf("Filme não encontrado.\n");
         }
 
     fclose(arquivo);
@@ -227,7 +228,7 @@ void listar_filme() {
     char genero[1000];
     printf("Escolha sua opção: \n");
     printf("1 - Listar todos os filmes\n");
-    printf("2 - Listar filmes por genero\n");
+    printf("2 - Listar filmes por gênero\n");
     printf("3 - Listar filmes por ano\n");
     printf("4 - Listar filmes por ator\n");
     printf("Opção: ");
@@ -240,8 +241,9 @@ void listar_filme() {
             fclose(arquivo);
             break;
         case 2:
-            printf("Digite o genero: ");
+            printf("Digite o gênero: \n");
             limpar_buffer_filme();
+            printf(">> ");
             fgets(consulta.valor, sizeof(consulta.valor), stdin);
             consulta.valor[strcspn(consulta.valor, "\n")] = '\0';
             printf("Buscando filmes com o genero: %s\n\n", consulta.valor);
@@ -265,12 +267,12 @@ void listar_filme() {
                 if (strcmp(f.genero, consulta.valor) == 0) {
                     encontrou = 1;
                     printf("Código: %s\n", f.codfilme);
-                    printf("titulo: %s\n", f.titulo);
-                    printf("ator_principal: %s\n", f.ator_principal);
-                    printf("ator_coadjuvante: %s\n", f.ator_coadjuvante);
-                    printf("ano: %s\n", f.ano);
-                    printf("diretor: %s\n", f.diretor);
-                    printf("genero: %s\n", f.genero);
+                    printf("Título: %s\n", f.titulo);
+                    printf("Ator principal: %s\n", f.ator_principal);
+                    printf("Ator coadjuvante: %s\n", f.ator_coadjuvante);
+                    printf("Ano: %s\n", f.ano);
+                    printf("Diretor: %s\n", f.diretor);
+                    printf("Gênero: %s\n", f.genero);
                     printf("\n");
                 }
             }
@@ -280,8 +282,9 @@ void listar_filme() {
             fclose(arquivo);
             break;
         case 3:
-            printf("Digite o ano: ");
+            printf("Digite o ano: \n");
             limpar_buffer_filme();
+            printf(">> ");
             fgets(consulta.valor, sizeof(consulta.valor), stdin);
             consulta.valor[strcspn(consulta.valor, "\n")] = '\0';
             printf("Buscando filmes do ano: %s\n\n", consulta.valor);
@@ -305,12 +308,12 @@ void listar_filme() {
                 if (strcmp(f.ano, consulta.valor) == 0) {
                     encontrou = 1;
                     printf("Código: %s\n", f.codfilme);
-                    printf("titulo: %s\n", f.titulo);
-                    printf("ator_principal: %s\n", f.ator_principal);
-                    printf("ator_coadjuvante: %s\n", f.ator_coadjuvante);
-                    printf("ano: %s\n", f.ano);
-                    printf("diretor: %s\n", f.diretor);
-                    printf("genero: %s\n", f.genero);
+                    printf("Título: %s\n", f.titulo);
+                    printf("Ator principal: %s\n", f.ator_principal);
+                    printf("Ator coadjuvante: %s\n", f.ator_coadjuvante);
+                    printf("Ano: %s\n", f.ano);
+                    printf("Diretor: %s\n", f.diretor);
+                    printf("Gênero: %s\n", f.genero);
                     printf("\n");
                 }
             }
@@ -320,8 +323,9 @@ void listar_filme() {
             fclose(arquivo);
         break;
         case 4:
-            printf("Digite o ator: ");
+            printf("Digite o ator \n");
             limpar_buffer_filme();
+            printf(">> ");
             fgets(consulta.valor, sizeof(consulta.valor), stdin);
             consulta.valor[strcspn(consulta.valor, "\n")] = '\0';
             printf("Buscando filmes do ator: %s\n\n", consulta.valor);
@@ -345,12 +349,12 @@ void listar_filme() {
                 if (strcmp(f.ator_principal, consulta.valor) == 0 || strcmp(f.ator_coadjuvante, consulta.valor) == 0) {
                     encontrou = 1;
                     printf("Código: %s\n", f.codfilme);
-                    printf("titulo: %s\n", f.titulo);
-                    printf("ator_principal: %s\n", f.ator_principal);
-                    printf("ator_coadjuvante: %s\n", f.ator_coadjuvante);
-                    printf("ano: %s\n", f.ano);
-                    printf("diretor: %s\n", f.diretor);
-                    printf("genero: %s\n", f.genero);
+                    printf("Título: %s\n", f.titulo);
+                    printf("Ator principal: %s\n", f.ator_principal);
+                    printf("Ator coadjuvante: %s\n", f.ator_coadjuvante);
+                    printf("Ano: %s\n", f.ano);
+                    printf("Diretor: %s\n", f.diretor);
+                    printf("Gênero: %s\n", f.genero);
                     printf("\n");
                 }
             }
