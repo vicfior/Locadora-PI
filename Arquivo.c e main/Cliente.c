@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
-#include "Pessoa.h"
 #include "Locacao.h"
+#include "Cliente.h"
 
 
 void limpar_buffer() {
@@ -20,22 +20,22 @@ Lista *lista_cria() {
     return lista;
 }
 
-Pessoa *pessoa_cria() {
-    Pessoa *pessoa = (Pessoa*)malloc(sizeof(Pessoa));
-    if (pessoa != NULL) {
-        pessoa->proximo = NULL;
+Cliente *cliente_cria() {
+    Cliente *cliente = (Cliente*)malloc(sizeof(Cliente));
+    if (cliente != NULL) {
+        cliente->proximo = NULL;
     }
-    return pessoa;
+    return cliente;
 }
 
 
-void pessoa_libera(Pessoa *pessoa) {
-   if(pessoa != NULL) {
-       free(pessoa);
+void cliente_libera(Cliente *cliente) {
+   if(cliente != NULL) {
+       free(cliente);
    }
 }
 
-int pessoa_cadastra(Lista *lista) {
+int cadastrar_cliente(Lista *lista) {
 
     FILE *arquivo = fopen("Clientes.txt", "a");
     if (arquivo == NULL) {
@@ -43,52 +43,52 @@ int pessoa_cadastra(Lista *lista) {
         return 0;
     }
 
-    Pessoa *pessoa = malloc(sizeof(Pessoa));
-    if (pessoa == NULL) {
+    Cliente *cliente = malloc(sizeof(Cliente));
+    if (cliente == NULL) {
         printf("Erro ao alocar memória.\n");
         return 0;
     }
 
-    printf("Digite o código do cliente: ");
-    fgets(pessoa->codcliente, sizeof(pessoa->codcliente), stdin);
-    getchar();
-    pessoa->codcliente[strcspn(pessoa->codcliente, "\n")] = '\0'; 
+    printf("Digite o código do cliente: \n");
+    printf(HI_WHITE">> "ANSI_COLOR_RESET);
+    fgets(cliente->codcliente, sizeof(cliente->codcliente), stdin);
+    cliente->codcliente[strcspn(cliente->codcliente, "\n")] = '\0'; 
     
-    printf("Digite o nome: ");
-    fgets(pessoa->nome, sizeof(pessoa->nome), stdin);
-    getchar();
-    pessoa->nome[strcspn(pessoa->nome, "\n")] = '\0'; 
+    printf("Digite o nome: \n");
+    printf(">> ");
+    fgets(cliente->nome, sizeof(cliente->nome), stdin);
+    cliente->nome[strcspn(cliente->nome, "\n")] = '\0'; 
 
-    printf("Digite o telefone: ");
-    fgets(pessoa->telefone, sizeof(pessoa->telefone), stdin);
-    getchar();
-    pessoa->telefone[strcspn(pessoa->telefone, "\n")] = '\0'; 
+    printf("Digite o telefone: \n");
+    printf(">> ");
+    fgets(cliente->telefone, sizeof(cliente->telefone), stdin);
+    cliente->telefone[strcspn(cliente->telefone, "\n")] = '\0'; 
 
-    printf("Digite o endereço: ");
-    fgets(pessoa->endereco, sizeof(pessoa->endereco), stdin);
-    getchar();
-    pessoa->endereco[strcspn(pessoa->endereco, "\n")] = '\0'; 
+    printf("Digite o endereço: \n");
+    printf(">> ");
+    fgets(cliente->endereco, sizeof(cliente->endereco), stdin);
+    cliente->endereco[strcspn(cliente->endereco, "\n")] = '\0'; 
 
-    printf("Digite a data de nascimento: ");
-    fgets(pessoa->data_nascimento, sizeof(pessoa->data_nascimento), stdin);
-    getchar();
-    pessoa->data_nascimento[strcspn(pessoa->data_nascimento, "\n")] = '\0'; 
+    printf("Digite a data de nascimento: \n");
+    printf(">> ");
+    fgets(cliente->data_nascimento, sizeof(cliente->data_nascimento), stdin);
+    cliente->data_nascimento[strcspn(cliente->data_nascimento, "\n")] = '\0'; 
 
     if (lista->inicio == NULL) {
-        lista->inicio = pessoa;
-        lista->fim = pessoa;
+        lista->inicio = cliente;
+        lista->fim = cliente;
     } else {
-        lista->fim->proximo = pessoa;
-        lista->fim = pessoa;
+        lista->fim->proximo = cliente;
+        lista->fim = cliente;
     }
 
-    pessoa->proximo = NULL;
-    printf("Pessoa cadastrada com sucesso!\n");
-    fprintf(arquivo, "%s\n", pessoa->codcliente);
-    fprintf(arquivo, "%s\n", pessoa->nome);
-    fprintf(arquivo, "%s\n", pessoa->telefone);
-    fprintf(arquivo, "%s\n", pessoa->endereco);
-    fprintf(arquivo, "%s\n", pessoa->data_nascimento);
+    cliente->proximo = NULL;
+    printf("cliente cadastrada com sucesso!\n");
+    fprintf(arquivo, "%s\n", cliente->codcliente);
+    fprintf(arquivo, "%s\n", cliente->nome);
+    fprintf(arquivo, "%s\n", cliente->telefone);
+    fprintf(arquivo, "%s\n", cliente->endereco);
+    fprintf(arquivo, "%s\n", cliente->data_nascimento);
     fprintf(arquivo, "\n");
     fclose(arquivo);
 
@@ -96,15 +96,15 @@ int pessoa_cadastra(Lista *lista) {
 }
 
 void listar_clientes(Lista *lista) {
-        Pessoa *pessoa = lista->inicio;
-        while (pessoa != NULL) {
-            printf("Código do cliente: %s\n", pessoa->codcliente);
-            printf("Nome: %s\n", pessoa->nome);
-            printf("Telefone: %s\n", pessoa->telefone);
-            printf("Endereço: %s\n", pessoa->endereco);
-            printf("Data de nascimento: %s\n", pessoa->data_nascimento);
+        Cliente *cliente = lista->inicio;
+        while (cliente != NULL) {
+            printf("Código do cliente: %s\n", cliente->codcliente);
+            printf("Nome: %s\n", cliente->nome);
+            printf("Telefone: %s\n", cliente->telefone);
+            printf("Endereço: %s\n", cliente->endereco);
+            printf("Data de nascimento: %s\n", cliente->data_nascimento);
             printf("\n");
-            pessoa = pessoa->proximo;
+            cliente = cliente->proximo;
         }
     FILE *arquivo = fopen("Clientes.txt", "r");
     if (arquivo == NULL) {
@@ -118,7 +118,7 @@ void listar_clientes(Lista *lista) {
     fclose(arquivo);
 }
 
-void remover_pessoa(Lista *lista) {
+void remover_cliente(Lista *lista) {
     char codcliente[15];
     printf("Digite o código do cliente que deseja remover: ");
     fgets(codcliente, sizeof(codcliente), stdin);
@@ -154,13 +154,13 @@ void remover_pessoa(Lista *lista) {
     if(linhas_escritas == linhas_lidas - 4) {
         remove("Clientes.txt");
         rename("temp.txt", "Clientes.txt");
-        printf("Pessoa removida com sucesso.\n");
+        printf("cliente removida com sucesso.\n");
     } else {
-        printf("Pessoa não encontrada.\n");
+        printf("cliente não encontrada.\n");
     }
 }
 
-void pesquisar_pessoa(Lista *lista) {
+void pesquisar_cliente(Lista *lista) {
     char codigo[20];
     char linha[300];
     printf("Digite o código do cliente: \n");
@@ -174,7 +174,7 @@ void pesquisar_pessoa(Lista *lista) {
         return;
     }
 
-    Pessoa cliente;
+    Cliente cliente;
     int encontrado = 0;
 
     while (fgets(linha, sizeof(linha), arquivo)) {
@@ -226,7 +226,7 @@ void alterar_clientes(const char *codigo_cliente) {
     char linha[200]; 
     while (fgets(linha, sizeof(linha), arquivo)) {
         char codigo[10];
-        Pessoa cliente;
+        Cliente cliente;
         int opcao;
         if (sscanf(linha, "%9s", codigo) == 1) {
             if (strcmp(codigo, codigo_cliente) == 0) {
