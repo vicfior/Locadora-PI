@@ -3,47 +3,253 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Filme.h"
-#include "Pessoa.h"
+#include "Cliente.h"
 #include "Locacao.h"
+#include "Terminal.h"
 
 #define ANSI_COLOR_RESET "\x1b[0m"
+
+// teclas
+#define UP_ARROW 72
+#define DOWN_ARROW 80
+#define LEFT_ARROW 75
+#define RIGHT_ARROW 77
+#define ENTER 13
+#define MENU 'm'
+#define SAIR 's'
+
 // Cores ANSI
-#define C_PINK      "\033[38;5;206m"
-#define C_GREEN     "\033[38;5;46m"
-#define C_ORANGE    "\033[38;5;208m"
-#define C_RED       "\033[38;5;196m"
-#define C_YELLOW    "\033[38;5;226m"
-#define C_BLUE      "\033[38;5;27m"
-#define C_MAGENTA   "\033[38;5;201m"
-#define C_WHITE     "\033[38;5;15m"
-#define C_GRAY      "\033[38;5;242m"
-#define C_BLACK     "\033[38;5;16m"
+#define C_PINK "\033[38;5;206m"
+#define C_GREEN "\033[38;5;46m"
+#define C_ORANGE "\033[38;5;208m"
+#define C_RED "\033[38;5;196m"
+#define C_YELLOW "\033[38;5;226m"
+#define C_BLUE "\033[38;5;27m"
+#define C_MAGENTA "\033[38;5;201m"
+#define C_WHITE "\033[38;5;15m"
+#define C_GRAY "\033[38;5;242m"
+#define C_BLACK "\033[38;5;16m"
 
 // Fundo ANSI
-#define BG_PINK     "\033[48;5;206m"
-#define BG_GREEN    "\033[48;5;46m"
-#define BG_ORANGE   "\033[48;5;208m"
-#define BG_RED      "\033[48;5;196m"
-#define BG_YELLOW   "\033[48;5;226m"
-#define BG_BLUE     "\033[48;5;27m"
-#define BG_MAGENTA  "\033[48;5;201m"
-#define BG_WHITE    "\033[48;5;15m"
-#define BG_GRAY     "\033[48;5;242m"
+#define BG_PINK "\033[48;5;206m"
+#define BG_GREEN "\033[48;5;46m"
+#define BG_ORANGE "\033[48;5;208m"
+#define BG_RED "\033[48;5;196m"
+#define BG_YELLOW "\033[48;5;226m"
+#define BG_BLUE "\033[48;5;27m"
+#define BG_MAGENTA "\033[48;5;201m"
+#define BG_WHITE "\033[48;5;15m"
+#define BG_GRAY "\033[48;5;242m"
 
 // Sublinhados ANSI
-#define UL_WHITE  "\e[4;37m"
+#define SUB_BRANCO "\e[4;37m"
+#define SUB_PINK "\e[4;95m"
 
 // Negrito ANSI
-#define HI_WHITE "\e[0;97m"
+#define NEG_BRANCO "\e[0;97m"
+#define NEG_PINK "\e[0;95m"
 
-int main() {
+#define UP "\u25B2"    // ▲
+#define DOWN "\u25BC"  // ▼
+#define RIGHT "\u25BA" // ►
+#define LEFT "\u25C4"  // ◄
+
+#define MENU_PRINCIPAL_TELA 0
+#define MENU_FILMES_TELA 1
+#define MENU_CLIENTES_TELA 2
+#define MENU_LOCACAO_TELA 3
+#define SAIR_PROGRAMA 4
+
+// TELAS DO MENU FILME
+#define TELA_NOVO_FILME 5
+#define TELA_EXIBIR_FILME 6
+#define TELA_PESQUISAR_FILME 7
+#define TELA_REMOVER_FILME 8
+#define TELA_SAIR_MENUFILME 9
+
+// TELAS DO MENU CLIENTE
+#define TELA_NOVO_CLIENTE 10
+#define TELA_EXIBIR_CLIENTES 11
+#define TELA_PESQUISAR_CLIENTE 12
+#define TELA_REMOVER_CLIENTE 13
+#define TELA_ALTERAR_CLIENTE 14
+#define TELA_SAIR_MENUCLIENTE 15
+
+// TELAS MENU LOCAÇÃO
+#define TELA_ALUGAR 16
+#define TELA_EXIBIR_LOC 17
+#define TELA_PESQUISAR_LOC 18
+#define TELA_PESQUISAR_HIST 19
+#define TELA_DEVOLVER_FILME 20
+#define TELA_RESERVAS 21
+#define TELA_REMOVER_RES 22
+#define TELA_EXIBIR_RES 23
+#define TELA_PESQUISAR_RES 24
+#define TELA_SAIR_MENULOCACAO 25
+
+int telaAtual = MENU_PRINCIPAL_TELA;
+
+void sair_do_Sistema()
+{
+    term_cls();
+    printf("Saindo do Sistema...\n");
+    getch(); // Aguarda pressionar qualquer tecla para continuar
+}
+
+void exibirMenuPrincipal(int opcaoSelecionada)
+{
+    term_cls();
     setlocale(LC_ALL, "pt_BR.UTF-8");
-    int escolha;
-    printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
+    const char *opcoesMenuPrincipal[] = {
+        "1 - FILMES",
+        "2 - CLIENTES",
+        "3 - SISTEMA DE LOCAÇÃO",
+        "4 - SAIR"};
+
+    printf(NEG_PINK SUB_BRANCO "================================= BEM VINDO À LOCADORA DE FILMES ==============================" ANSI_COLOR_RESET "\n");
+
+    for (int i = 0; i < sizeof(opcoesMenuPrincipal) / sizeof(opcoesMenuPrincipal[0]); i++)
+    {
+        if (i == opcaoSelecionada - 1)
+        {
+            printf(NEG_BRANCO " | " ANSI_COLOR_RESET NEG_PINK "%s", " > ");
+        }
+        else
+        {
+            printf(NEG_BRANCO " | " ANSI_COLOR_RESET);
+        }
+        printf("%s\n", opcoesMenuPrincipal[i]);
+    }
+
+    printf("\n");
+    printf(NEG_PINK "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
+    printf(C_GRAY "Navegue por meio das setas %s %s %s %s\n" ANSI_COLOR_RESET, UP, DOWN, LEFT, RIGHT);
+}
+
+void exibirMenuFilmes(int opcaoSelecionada)
+{
+    term_cls();
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+    Lista_filme *listaf = lista_cria_filme();
+    int opcao = 1;
+    char codigo_filme[20];
+
+    const char *opcoesMenuFilmes[] = {
+        "1 - CADASTRAR FILME",
+        "2 - LISTAR FILME",
+        "3 - REMOVER FILME",
+        "4 - PESQUISAR FILME",
+        "5 - VOLTAR AO MENU PRINCIPAL",
+        "6 - SAIR"};
+
+    printf(SUB_BRANCO NEG_PINK " ================================= MENU DE FILMES ================================= " ANSI_COLOR_RESET "\n");
+    for (int i = 0; i < sizeof(opcoesMenuFilmes) / sizeof(opcoesMenuFilmes[0]); i++)
+    {
+        if (i == opcaoSelecionada - 1)
+        {
+            printf(NEG_BRANCO " | " ANSI_COLOR_RESET NEG_PINK "%s", " > ");
+        }
+        else
+        {
+            printf(NEG_BRANCO " | " ANSI_COLOR_RESET);
+        }
+        printf("%s\n" ANSI_COLOR_RESET, opcoesMenuFilmes[i]);
+    }
+
+    printf("\n");
+    printf(NEG_PINK "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
+    printf(C_GRAY "Navegue por meio das setas %s %s %s %s\n", UP, DOWN, LEFT, RIGHT, ANSI_COLOR_RESET);
+}
+
+void exibirMenuClientes(int opcaoSelecionada)
+{
+    term_cls();
+
+    const char *opcoesMenuClientes[] = {
+        "1 - CADASTRAR CLIENTE",
+        "2 - LISTAR CLIENTE",
+        "3 - PESQUISAR CLIENTE",
+        "4 - ALTERAR CLIENTE",
+        "5 - REMOVER CLIENTE",
+        "6 - VOLTAR AO MENU PRINCIPAL",
+        "7 - SAIR"
+        };
+
+    printf(SUB_BRANCO NEG_PINK " ================================= MENU DE CLIENTES ================================= " ANSI_COLOR_RESET "\n");
+    for (int i = 0; i < sizeof(opcoesMenuClientes) / sizeof(opcoesMenuClientes[0]); i++)
+    {
+        if (i == opcaoSelecionada - 1)
+        {
+            printf(NEG_BRANCO " | " ANSI_COLOR_RESET NEG_PINK " > ");
+        }
+        else
+        {
+            printf(NEG_BRANCO " | " ANSI_COLOR_RESET);
+        }
+        printf("%s\n" ANSI_COLOR_RESET, opcoesMenuClientes[i]);
+    }
+
+    printf("\n");
+    printf(NEG_PINK "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
+    printf(C_GRAY "Navegue por meio das setas %s %s %s %s\n", UP, DOWN, LEFT, RIGHT ANSI_COLOR_RESET);
+}
+
+void exibirMenuLocacao(int opcaoSelecionada)
+{
+    term_cls();
+
+    const char *opcoesMenuLocacao[] = {
+        "1 - ALUGAR FILME",
+        "2 - EXIBIR LOCACOES",
+        "3 - PESQUISAR LOCACOES",
+        "4 - PESQUISAR HISTÓRICO DO CLIENTE",
+        "5 - PESQUISAR RESERVA",
+        "6 - DEVOLVER FILME",
+        "7 - RESERVAR FILME",
+        "8 - REMOVER RESERVA",
+        "9 - EXIBIR RESERVAS",
+        "10 - VOLTAR AO MENU PRINCIPAL",
+        "0 - SAIR"};
+
+    printf(SUB_BRANCO NEG_PINK " ================================= MENU DE LOCAÇÃO ================================= " ANSI_COLOR_RESET "\n");
+    for (int i = 0; i < sizeof(opcoesMenuLocacao) / sizeof(opcoesMenuLocacao[0]); i++)
+    {
+        if (i == opcaoSelecionada - 1)
+        {
+            printf(NEG_BRANCO " | " ANSI_COLOR_RESET NEG_PINK " > ");
+        }
+        else
+        {
+            printf(NEG_BRANCO " | " ANSI_COLOR_RESET);
+        }
+        printf("%s\n" ANSI_COLOR_RESET, opcoesMenuLocacao[i]);
+    }
+
+    printf("\n");
+    printf(NEG_PINK "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
+    printf(C_GRAY "Navegue por meio das setas %s %s %s %s\n", UP, DOWN, LEFT, RIGHT ANSI_COLOR_RESET);
+}
+
+int main()
+{
+        setlocale(LC_ALL, "pt_BR.UTF-8");
+        int telaAtual = MENU_PRINCIPAL_TELA;
+        int opcaoSelecionada = MENU_FILMES_TELA;
+        int tecla;
+        Lista_filme *listaf = lista_cria_filme();
+        Lista *lista = lista_cria();
+        Locacao *locacao = locacao_cria();
+        char codcliente[20];
+        char codfilme[20];
+        char codlocacao[10];
+
+        term_cls();
+
+        printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
     printf("☆                                                 ☆ BEM VINDO À LOCADORA DE FILMES ☆                                   ☆\n");
     printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
     printf("                                 -------------------------------------------------------------,                               \n");
-    printf("                                 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [                                \n");  
+    printf("                                 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [                                \n");
     printf("                                 ------------------------------------------------------------/                                \n");
     printf("                                 |- O -    ^^       |                  |           _   _     |                                \n");
     printf("                                 |  |        O  ^^  |   ^^   |||||     |     ___  ( ) ( )   _/                                \n");
@@ -54,277 +260,308 @@ int main() {
     printf("                                 -----------------------------------------------------_/                                      \n");
     printf("                                 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] ['                                        \n");
     printf("                                 ----------------------------------------------------'                                        \n");
-    
-    printf("Escolha sua opção: \n");
-    printf("1 - FILMES\n");
-    printf("2 - CLIENTES\n");
-    printf("3 - SISTEMA DE LOCAÇÃO\n");
-    printf("0 - SAIR\n");
-    printf("Opção: ");
-    scanf("%d", &escolha);
-    printf ("\n");
 
-    switch (escolha)
-    {
-    case 1: 
-        menu_filmes();
-        break;
-    case 2: 
-        menu_clientes();
-        break;
-    case 3: 
-        menu_operacao();
-        break;
-    case 0: 
-        printf(".:*☆ Obrigado por visitar nossa locadora .:*☆ ");
-		printf("%s\n", ADEUS);
-		exit(0);
-        break;
-    default:
-        printf("Opção inválida.\n");
-		return 0;
-    } 
-}
 
-void menu_operacao() {
-    setlocale(LC_ALL, "pt_BR.UTF-8");
-    Locacao *locacao = locacao_cria();
-    Lista *lista = lista_cria();
-    char codcliente[10]; 
-    char codfilme[10];
-    char codlocacao[10];
-    int a;
-    int b;
-    int opcao = 1;
-    printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
-    printf("☆                                                 MENU DE SISTEMA DE LOCAÇÃO                                           ☆\n");
-    printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
-    while (opcao != 0) {
-        printf("\n                  ☆ -------------------- ☆ Escolha sua opção ☆ ---------------------------- ☆");
-        printf("\n                  ☆                      1 - ALUGAR FILME                                   ☆");
-        printf("\n                  ☆                      2 - EXIBIR LOCACOES                                ☆");
-        printf("\n                  ☆                      3 - PESQUISAR LOCACOES                             ☆");
-        printf("\n                  ☆                      4 - PESQUISAR HISTÓRICO DO CLIENTE                 ☆");
-        printf("\n                  ☆                      5 - DEVOLVER FILME                                 ☆");
-        printf("\n                  ☆                      6 - RESERVAR FILME                                 ☆");
-        printf("\n                  ☆                      7 - REMOVER RESERVA                                ☆");
-        printf("\n                  ☆                      8 - EXIBIR RESERVAS                                ☆");
-        printf("\n                  ☆                      9 - PESQUISAR RESERVA                              ☆");
-        printf("\n                  ☆                      10 - VOLTAR AO MENU PRINCIPAL                      ☆");
-        printf("\n                  ☆                      0 - SAIR                                           ☆");
-        printf("\n                  ☆ -------------------- ☆ Escolha sua opção ☆ ---------------------------- ☆");
-        printf("\nOpção: ");
-        scanf("%d", &opcao);
-        limpar_buffer();
-        switch (opcao) {
-            case 1:
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
-                printf("☆                                                 ☆ ALUGAR FILMES ☆                                                   ☆\n");
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
-                alugar_filme();     
+        system("pause");
+        getch();
+
+        while (1)
+        {
+            system("cls"); // Limpa a tela (use "clear" no Linux/Unix)
+
+            switch (telaAtual)
+            {
+            case MENU_PRINCIPAL_TELA:
+                exibirMenuPrincipal(opcaoSelecionada);
                 break;
-            case 2:
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
-                printf("☆                                                ☆ EXIBINDO LOCAÇÕES ☆                                                ☆\n");
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
+            case MENU_FILMES_TELA:
+                exibirMenuFilmes(opcaoSelecionada);
+                break;
+            case MENU_CLIENTES_TELA:
+                exibirMenuClientes(opcaoSelecionada);
+                break;
+            case MENU_LOCACAO_TELA:
+                exibirMenuLocacao(opcaoSelecionada);
+                break;
+            case TELA_NOVO_FILME:
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== CADASTRANDO FILMES =====================" ANSI_COLOR_RESET "\n");
+                filme_cadastra(listaf);
+                getch();
+                telaAtual = MENU_FILMES_TELA;
+                break;
+            case TELA_EXIBIR_FILME:
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== EXIBINDO FILMES =====================" ANSI_COLOR_RESET "\n");
+                listar_filme();
+                getch();
+                telaAtual = MENU_FILMES_TELA;
+                break;
+            case TELA_PESQUISAR_FILME:
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== PESQUISANDO FILMES =====================" ANSI_COLOR_RESET "\n");
+                pesquisar_filme(listaf);
+                getch();
+                telaAtual = MENU_FILMES_TELA;
+                break;
+            case TELA_REMOVER_FILME:
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== REMOVENDO FILMES =====================" ANSI_COLOR_RESET "\n");
+                remover_filme(listaf);
+                getch();
+                telaAtual = MENU_FILMES_TELA;
+                break;
+            case TELA_SAIR_MENUFILME:
+                telaAtual = MENU_PRINCIPAL_TELA;
+                break;
+            case TELA_NOVO_CLIENTE: 
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== CADASTRANDO CLIENTES =====================" ANSI_COLOR_RESET "\n");
+                cadastrar_cliente(lista);
+                getch();
+                telaAtual = MENU_CLIENTES_TELA;
+                break;
+            case TELA_EXIBIR_CLIENTES:
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== EXIBINDO TODOS OS CLIENTES =====================" ANSI_COLOR_RESET "\n");
+                listar_clientes(lista);
+                getch();
+                telaAtual = MENU_CLIENTES_TELA;
+                break;
+            case TELA_PESQUISAR_CLIENTE:
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== PESQUISANDO CLIENTES =====================" ANSI_COLOR_RESET "\n");
+                pesquisar_cliente(lista);
+                getch();
+                telaAtual = MENU_CLIENTES_TELA;
+                break;
+            case TELA_ALTERAR_CLIENTE:
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== ALTERANDO CLIENTES =====================" ANSI_COLOR_RESET "\n");
+                printf("Digite o código do cliente: ");
+                fgets(codcliente, sizeof(codcliente), stdin);
+                codcliente[strcspn(codcliente, "\n")] = '\0';
+                alterar_clientes(codcliente);
+                getch();
+                telaAtual = MENU_CLIENTES_TELA;
+                break;
+            case TELA_REMOVER_CLIENTE:
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== REMOVENDO CLIENTES =====================" ANSI_COLOR_RESET "\n");
+                remover_cliente(lista);
+                getch();
+                telaAtual = MENU_CLIENTES_TELA;
+                break;
+            case TELA_SAIR_MENUCLIENTE:
+                telaAtual = MENU_PRINCIPAL_TELA;
+                break;
+            case TELA_ALUGAR:
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== ALUGANDO FILMES =====================" ANSI_COLOR_RESET "\n");
+                alugar_filme();
+                getch();
+                telaAtual = MENU_LOCACAO_TELA;
+                break;
+            case TELA_EXIBIR_LOC:
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== EXIBINDO LOCAÇÕES =====================" ANSI_COLOR_RESET "\n");
                 exibir_locacoes();
+                getch();
+                telaAtual = MENU_LOCACAO_TELA;
                 break;
-            case 3:
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
-                printf("☆                                              ☆ PESQUISANDO LOCAÇÕES ☆                                               ☆\n");
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
+            case TELA_PESQUISAR_LOC:
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== PESQUISANDO LOCAÇÕES =====================" ANSI_COLOR_RESET "\n");
                 pesquisar_locacao();
+                getch();
+                telaAtual = MENU_LOCACAO_TELA;
                 break;
-            case 4:
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
-                printf("☆                                          ☆ HISTÓRICO DO CLIENTE ☆                                                   ☆\n");
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
+            case TELA_PESQUISAR_HIST:
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== PESQUISANDO HISTÓRICO =====================" ANSI_COLOR_RESET "\n");
                 pesquisar_historico();
+                getch();
+                telaAtual = MENU_LOCACAO_TELA;
                 break;
-            case 5:
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
-                printf("☆                                          ☆ DEVOLVENDO O FILME ☆                                                     ☆\n");
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
+            case TELA_PESQUISAR_RES:
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== PESQUISANDO RESERVAS =====================" ANSI_COLOR_RESET "\n");
+                pesquisar_reserva();
+                getch();
+                telaAtual = MENU_LOCACAO_TELA;
+                break;
+            case TELA_DEVOLVER_FILME:
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== DEVOLVENDO O FILME =====================" ANSI_COLOR_RESET "\n");
                 printf("Digite o código de locação: ");
                 fgets(codlocacao, sizeof(codlocacao), stdin);
-                codlocacao[strcspn(codlocacao, "\n")] = '\0';  
+                codlocacao[strcspn(codlocacao, "\n")] = '\0';
                 devolver_filme(codlocacao);
                 printf("Removendo locação %s\n", codlocacao);
                 remover_locacao(codlocacao);
                 printf("Filme %s devolvido com sucesso e disponível para nova locação!\n", codlocacao);
+                getch();
+                telaAtual = MENU_LOCACAO_TELA;
                 break;
-            case 6:
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
-                printf("☆                                              ☆ RESERVANDO FILME ☆                                                   ☆\n");
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
+            case TELA_RESERVAS:
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== RESERVANDO FILME =====================" ANSI_COLOR_RESET "\n");
                 reservar_filme();
+                getch();
+                telaAtual = MENU_LOCACAO_TELA;
                 break;
-            case 7:
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
-                printf("☆                                             ☆ REMOVENDO RESERVA ☆                                                   ☆\n");
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
+            case TELA_REMOVER_RES:
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== REMOVENDO RESERVA =====================" ANSI_COLOR_RESET "\n");
                 remover_reserva();
+                getch();
+                telaAtual = MENU_LOCACAO_TELA;
                 break;
-            case 8:
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
-                printf("☆                                                  ☆ EXIBINDO RESERVAS ☆                                              ☆\n");
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
+            case TELA_EXIBIR_RES:
+                term_cls();
+                printf(SUB_BRANCO NEG_PINK "==================== EXIBINDO RESERVAS =====================" ANSI_COLOR_RESET "\n");
                 exibir_reservas();
+                getch();
+                telaAtual = MENU_LOCACAO_TELA;
                 break;
-            case 9:
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
-                printf("☆                                                ☆ PESQUISANDO RESERVA ☆                                              ☆\n");
-                printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
-                pesquisar_reserva();
+            case TELA_SAIR_MENULOCACAO:
+                telaAtual = MENU_PRINCIPAL_TELA;
                 break;
-            case 10:
-                main();
-                break;
-            case 0:
-                printf(".:*☆ Obrigado por visitar nossa locadora .:*☆ ");
-                printf("%s", ADEUS);
-                exit(0);
-                break;
-            default:
-                printf("Opção inválida.\n");
-                break;
-        }
-    }
-}
-
-void menu_filmes() {
-    setlocale(LC_ALL, "pt_BR.UTF-8");
-    Lista_filme *listaf = lista_cria_filme();
-    int opcao = 1;
-    char codigo_filme[20];
-    printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
-    printf("☆                                                 MENU DE FILMES                                                       ☆\n");
-    printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
-    while (opcao != 0) {
-        printf("\n                      ☆ -------------------- ☆ Escolha sua opção ☆ ---------------------------- ☆");
-        printf("\n                      ☆                      1 - CADASTRAR FILME                                ☆");
-        printf("\n                      ☆                      2 - LISTAR FILME                                   ☆");
-        printf("\n                      ☆                      3 - REMOVER FILME                                  ☆");
-        printf("\n                      ☆                      4 - PESQUISAR FILME                                ☆");
-        printf("\n                      ☆                      5 - VOLTAR AO MENU PRINCIPAL                       ☆");
-        printf("\n                      ☆                      0 - SAIR                                           ☆");
-        printf("\n                      ☆ -------------------- ☆ Escolha sua opção ☆ ---------------------------- ☆");
-        printf("\nOpção: ");
-        scanf("%d", &opcao);
-        limpar_buffer();
-        switch (opcao) {
-        case 1:
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            printf("☆                                         ☆ CADASTRANDO FILMES ☆                                         ☆\n");
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            filme_cadastra(listaf);
-            break;
-        case 2:
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            printf("☆                                         ☆ LISTANDO FILMES ☆                                            ☆\n");
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            listar_filme();
-            break;
-        case 3:
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            printf("☆                                         ☆ REMOVENDO FILMES ☆                                           ☆\n");
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            remover_filme(listaf);
-            break;
-        case 4:
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            printf("☆                                         ☆ PESQUISANDO FILMES ☆                                         ☆\n");
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            pesquisar_filme(listaf);
-            break;
-        case 5:
-            main();
-            break;
-        case 0:
-            printf("Obrigado por utilizar o sistema ");
-            printf("%s", ADEUS);
-            exit(0);
-        default:
-            printf("Opção inválida.\n");
-            break;
-        }
-
-    }
-}
-
-void menu_clientes() {
-    setlocale(LC_ALL, "pt_BR.UTF-8");
-    Lista *lista = lista_cria();
-    int opcao = 1;
-    char codigo_cliente[20];
-    printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-    printf("☆                                         BEM VINDO AO MENU DE CLIENTES                                   ☆\n");
-    printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-    while(opcao != 0) {
-    printf("\n                  ☆ -------------------- ☆ Escolha sua opção ☆ -----------------------------☆");
-    printf("\n                  ☆                      1 - CADASTRAR CLIENTE                              ☆");
-    printf("\n                  ☆                      2 - LISTAR CLIENTE                                 ☆");
-    printf("\n                  ☆                      3 - REMOVER CLIENTE                                ☆");
-    printf("\n                  ☆                      4 - PESQUISAR CLIENTE                              ☆");
-    printf("\n                  ☆                      5 - ALTERAR CLIENTE                                ☆");
-    printf("\n                  ☆                      6 - VOLTAR AO MENU PRINCIPAL                       ☆");
-    printf("\n                  ☆                      0 - SAIR                                           ☆");
-    printf("\n                  ☆ ------------------------------------------------------------------------☆");
-    printf("\nOpção: ");
-    scanf("%d", &opcao);
-    limpar_buffer();
-    switch (opcao)
-        {
-        case 1:
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            printf("☆                                         ☆ CADASTRANDO CLIENTES ☆                                       ☆\n");
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            printf("\n");
-            pessoa_cadastra(lista);
-            break;
-        case 2:
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            printf("☆                                         ☆ LISTANDO CLIENTES ☆                                          ☆\n");
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            printf("\n");
-            listar_clientes(lista);
-            break;
-        case 3:
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            printf("☆                                         ☆ REMOVENDO CLIENTES ☆                                         ☆\n");
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            printf("\n");
-            remover_pessoa(lista);
-            break;
-        case 4: 
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            printf("☆                                        ☆ PESQUISANDO CLIENTES ☆                                        ☆\n");
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            printf("\n");
-            pesquisar_pessoa(lista);
-            break;
-        case 5:
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            printf("☆                                         ☆ ALTERANDO CLIENTES ☆                                         ☆\n");
-            printf("☆ ------------------------------------------------------------------------------------------------------- ☆\n");
-            printf("\n");
-            printf("Digite o código do cliente: ");
-            fgets(codigo_cliente, sizeof(codigo_cliente), stdin);
-            codigo_cliente[strcspn(codigo_cliente, "\n")] = '\0'; 
-            alterar_clientes(codigo_cliente);
-            break;
-        case 6:
-            main();
-            break;
-        case 0: 
-            printf("☆ Obrigado por utilizar o sistema ☆\n");
-            printf("%s", ADEUS"\n");
-            exit(0);
-            break;
-        default:
-            printf("Opção inválida.\n");
-            break;
+            case SAIR_PROGRAMA:
+                sair_do_Sistema();
+                return 0;
             }
-    
-    }
+
+            tecla = _getch();
+
+            if (tecla == SAIR) {
+            sair_do_Sistema();
+            } else if (tecla == MENU) {
+                telaAtual = MENU_PRINCIPAL_TELA;
+                opcaoSelecionada = 1;
+                continue;
+            }
+
+            switch (tecla)
+            {
+            case UP_ARROW:
+                if (telaAtual == MENU_PRINCIPAL_TELA || telaAtual == MENU_FILMES_TELA || telaAtual == MENU_CLIENTES_TELA || telaAtual == MENU_LOCACAO_TELA)
+                {
+                    opcaoSelecionada = (opcaoSelecionada > 1) ? opcaoSelecionada - 1 : 7;
+                }
+                break;
+            case DOWN_ARROW:
+                if (telaAtual == MENU_PRINCIPAL_TELA || telaAtual == MENU_FILMES_TELA || telaAtual == MENU_CLIENTES_TELA || telaAtual == MENU_LOCACAO_TELA)
+                {
+                    opcaoSelecionada = (opcaoSelecionada < 11) ? opcaoSelecionada + 1 : 1;
+                }
+                break;
+            case LEFT_ARROW:
+                if (telaAtual != MENU_PRINCIPAL_TELA)
+                {
+                    telaAtual = MENU_PRINCIPAL_TELA;
+                    opcaoSelecionada = MENU_FILMES_TELA || MENU_CLIENTES_TELA || MENU_LOCACAO_TELA;
+                }
+                break;
+            case RIGHT_ARROW:
+            case ENTER:
+                if (telaAtual == MENU_PRINCIPAL_TELA)
+                {
+                    telaAtual = opcaoSelecionada;
+                }
+                else if (telaAtual ==  MENU_FILMES_TELA)
+                {
+                    switch (opcaoSelecionada)
+                    {
+                    case 1:
+                        telaAtual = TELA_NOVO_FILME;
+                        break;
+                    case 2:
+                        telaAtual = TELA_EXIBIR_FILME;
+                        break;
+                    case 3:
+                        telaAtual = TELA_REMOVER_FILME;
+                        break;
+                    case 4:
+                        telaAtual = TELA_PESQUISAR_FILME;
+                        break;
+                    case 5:
+                        telaAtual = MENU_PRINCIPAL_TELA;
+                        opcaoSelecionada = MENU_FILMES_TELA;
+                        break;
+                    case 6:
+                        telaAtual = SAIR_PROGRAMA;
+                        break;
+                    }
+                } 
+                else if (telaAtual == MENU_CLIENTES_TELA)
+                {
+                    switch (opcaoSelecionada)
+                    {
+                    case 1:
+                        telaAtual = TELA_NOVO_CLIENTE;
+                        break;
+                    case 2:
+                        telaAtual = TELA_EXIBIR_CLIENTES;
+                        break;
+                    case 3: 
+                        telaAtual = TELA_PESQUISAR_CLIENTE;
+                        break;
+                    case 4:
+                        telaAtual = TELA_ALTERAR_CLIENTE;
+                        break;
+                    case 5:
+                        telaAtual = TELA_REMOVER_CLIENTE;
+                        break;  
+                    case 6:
+                        telaAtual = MENU_PRINCIPAL_TELA;
+                        opcaoSelecionada = MENU_CLIENTES_TELA;
+                        break;
+                    case 7:
+                        telaAtual = SAIR_PROGRAMA;
+                        break;
+                    }
+                } else if (telaAtual == MENU_LOCACAO_TELA) {
+                    switch (opcaoSelecionada)
+                    {
+                    case 1:
+                        telaAtual = TELA_ALUGAR;
+                        break;
+                    case 2:
+                        telaAtual = TELA_EXIBIR_LOC;
+                        break;
+                    case 3:
+                        telaAtual = TELA_PESQUISAR_LOC;
+                        break;
+                    case 4:
+                        telaAtual = TELA_PESQUISAR_HIST;
+                        break;
+                    case 5:
+                        telaAtual = TELA_PESQUISAR_RES;
+                        break;
+                    case 6:
+                        telaAtual = TELA_DEVOLVER_FILME;
+                        break;
+                    case 7:
+                        telaAtual = TELA_RESERVAS;
+                        break;
+                    case 8:
+                        telaAtual = TELA_REMOVER_RES;
+                        break;
+                    case 9:
+                        telaAtual = TELA_EXIBIR_RES;
+                        break;
+                    case 10:
+                        telaAtual = MENU_PRINCIPAL_TELA;
+                        opcaoSelecionada = MENU_LOCACAO_TELA;
+                        break;
+                    case 11:
+                        telaAtual = SAIR_PROGRAMA;
+                        break;
+                    }
+                } break;
+            } 
+        } 
+
+        return 0;
 }
