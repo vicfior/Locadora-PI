@@ -1,6 +1,6 @@
 <h1 align="center"> Locadora de Filmes </h1>
 
-Esse projeto foi desenvolvido como parte da disciplina Projeto Integrador. Consiste em um sistema de gerenciamento para uma **locadora de filmes**, permitindo a administração dos filmes e dos clientes e o controle de entradas e saídas da locadora.
+Esse projeto foi desenvolvido como parte da disciplina Projeto Integrador relacionado com a disciplina de Estrutura de Dados. Consiste em um sistema de gerenciamento para uma **locadora de filmes**, permitindo a administração dos filmes e dos clientes e o controle de entradas e saídas da locadora.
 
 ## Integrantes
 
