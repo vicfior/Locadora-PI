@@ -2,6 +2,8 @@
 
 Esse projeto foi desenvolvido como parte da disciplina Projeto Integrador relacionado com a disciplina de Estrutura de Dados. Consiste em um sistema de gerenciamento para uma **locadora de filmes**, permitindo a administração dos filmes e dos clientes e o controle de entradas e saídas da locadora.
 
+<!-- Adicionar imagens do projeto -->
+
 ## Integrantes
 
 | Nome          |     GitHub                                        |
@@ -14,11 +16,16 @@ Esse projeto foi desenvolvido como parte da disciplina Projeto Integrador relaci
 ## Tecnologias usadas
 * Linguagem de programação: **C**
 
-## Modelagens de banco de dados
+## 	:grey_question: Como rodar o projeto 
 
-<p float="left">
-  <img src="imagens/modelo conceitual.png" width="500" /> 
-  <img src="imagens/modelo lógico.png" width="500" />
-  <img src="imagens/Diagrama das telas.png" width="500" />
-</p>
-
+Caso nunca tenha usado um programa em C, baixe todos os arquivos.c e os arquivos.h, abra-os em sua IDE de preferência e use os seguintes comandos para compilar e executar esse código:
+```
+gcc -o saida main.c Cliente.c Filme.c Locacao.c Terminal.c
+```
+Depois rode o seguinte comando: 
+```
+./saida
+```
+## :white_check_mark: Requisitos
+* Um compilador para compilar o projeto em C (ex.: [Mingw](https://www.mingw-w64.org/))
+* Uma IDE para abrir o projeto
