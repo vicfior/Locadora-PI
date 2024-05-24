@@ -1,5 +1,6 @@
-#ifndef PESSOA_H
-#define PESSOA_H 1
+#ifndef CLIENTE_H
+#define CLIENTE_H 1
+
 //Macros de emojis
 #define PESSOA "\U0001F3AC"
 #define CODIGO "\U0001F511"
@@ -8,8 +9,13 @@
 #define DATA "\U0001F4C5"
 #define ADEUS "\U0001F44B"
 
+#include "Locacao.h"
 
-typedef struct pessoa {
+#define HI_WHITE "\e[0;97m"
+#define ANSI_COLOR_RESET "\x1b[0m"      
+
+
+typedef struct cliente {
     char nome[200];
     char codcliente [10];
     char codfuncionario [10];
@@ -17,25 +23,28 @@ typedef struct pessoa {
     char telefone [20]; 
     char endereco[400]; 
     char data_nascimento[15];
-    struct pessoa *proximo;
-}Pessoa;
+    char valorpago;
+    struct cliente *proximo;
+} Cliente;
 
 typedef struct lista Lista;
 struct lista{
-    Pessoa *inicio;
-    Pessoa *fim;
+    Cliente *inicio;
+    Cliente *fim;
 };
-typedef struct consultacli Consultacli;
 
 //Funções para cadastrar os clientes e funcionários
 Lista *lista_cria();
-Pessoa *pessoa_cria();
-void pessoa_libera(Pessoa *pessoa);
-int pessoa_cadastra(Lista *lista);
-void inserir_pessoa(Lista *lista);
+Cliente *pessoa_cria();
+//void pessoa_libera(Cliente *cliente);
+void liberar_cliente(Cliente *cliente);
+//int pessoa_cadastra(Lista *lista);
+int cadastrar_cliente(Lista *lista);
+void inserir_cliente(Lista *lista);
 void listar_clientes(Lista *lista);
-void remover_pessoa(Lista *lista);
-void pesquisar_pessoa(Lista *lista);
+void remover_cliente(Lista *lista);
+void pesquisar_cliente(Lista *lista);
 void alterar_clientes(const char *codigo_cliente);
 void menu_clientes();
-#endif // PESSOA_H
+
+#endif 
