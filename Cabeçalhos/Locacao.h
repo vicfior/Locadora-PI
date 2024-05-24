@@ -1,7 +1,7 @@
 #ifndef LOCACAO_H
 #define LOCACAO_H 1
 
-#include "Pessoa.h"
+#include "Cliente.h"
 #include "Filme.h"
 
 typedef struct locacao {
@@ -40,5 +40,5 @@ void reservar_filme();
 void menu_operacao();
 void remover_reserva();
 int pesquisar_reserva();
-
+void exibir_reservas();
 #endif
