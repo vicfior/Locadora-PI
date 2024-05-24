@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Filme.h"
-#include "Pessoa.h"
+#include "Cliente.h"
 #include "Locacao.h"
 
 void limpar_buffer_locacao() {
@@ -31,7 +31,6 @@ void inserir_locacao(Locacao **inicio, Locacao *nova_locacao) {
     }
 }
 
-
 void locacao_libera(Locacao *locacao) {
    if(locacao != NULL) {
        free(locacao);
@@ -39,7 +38,7 @@ void locacao_libera(Locacao *locacao) {
 }
 
 int cliente_existe(char* codcliente) {
-    Pessoa cliente;
+    Cliente cliente;
     FILE* arq = fopen("Clientes.txt", "r");
     if (arq == NULL) {
         printf("Erro ao abrir o arquivo.\n");
@@ -92,7 +91,7 @@ int cliente_existe(char* codcliente) {
         limpar_buffer_locacao();
         if (opcao == 1) {
             Lista *lista = lista_cria();
-            if (pessoa_cadastra(lista)==1) {
+            if (cadastrar_cliente(lista)==1) {
                 return 1;
             } else {
                 return 0;
@@ -216,7 +215,7 @@ void alugar_filme() {
                         printf("Voltando ao menu\n");
                     }
                 } else if (a == 2) {
-                    menu_operacao();
+                    //menu_operacao();
                 }
         }
     } else {
@@ -438,7 +437,6 @@ void remover_locacao(char *codlocacao) {
     return;
 }
     
-
 void pesquisar_historico() {
     char codcliente[20];
     char linha[300];
@@ -475,11 +473,11 @@ void pesquisar_historico() {
         
         if (strcmp(l.codcliente, consulta_h.valor) == 0) {
             informacao_encontrada = 1;
-            printf("Código do cliente: %s\n", l.codcliente);
-            printf("Código da locação: %s\n", l.codlocacao);
-            printf("Código do filme: %s\n", l.codfilme);
-            printf("Data de devolução: %s\n", l.data_devolucao);
-            printf("Valor pago: %.2f\n", l.valorpago);
+            printf("%s\n", l.codcliente);
+            printf("%s\n", l.codlocacao);
+            printf("%s\n", l.codfilme);
+            printf("%s\n", l.data_devolucao);
+            printf("%.2f\n", l.valorpago);
             printf("\n");
         }
     } 
@@ -573,8 +571,8 @@ int pesquisar_reserva() {
         printf("Erro ao abrir o arquivo.\n");
         return 0;
     }
-    printf("Digite o código do filme: ");
-    getchar();
+    printf("Digite o código do filme: \n");
+    printf(">> ");
     fgets(consulta_h.valor , sizeof(consulta_h.valor), stdin);
     consulta_h.valor[strcspn(consulta_h.valor, "\n")] = '\0';
     printf ("Procurando informação do filme %s\n", consulta_h.valor);
