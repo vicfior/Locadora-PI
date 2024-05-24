@@ -19,5 +19,6 @@ Esse projeto foi desenvolvido como parte da disciplina Projeto Integrador relaci
 <p float="left">
   <img src="imagens/modelo conceitual.png" width="500" /> 
   <img src="imagens/modelo lógico.png" width="500" />
+  <img src="imagens/Diagrama das telas.png" width="500" />
 </p>
 
