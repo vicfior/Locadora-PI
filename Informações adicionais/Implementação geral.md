@@ -1,9 +1,10 @@
 # Informações técnicas
 
 Esta seção é destinada a explicações mais detalhadas sobre cada um dos arquivos ```.c ``` construídos para a implementação do sistema de locadora e como cada um deles consegue se relacionar entre si. Para melhorar o entendimento e visualização desses relacionamentos, foram elaborados diagramas de banco de dados, apesar de nenhum tipo de banco de dados ter sido utilizado na elaboração deste projeto.
-<p align="float">
-<img src="imagens/modelo conceitual.png" width="400" /> 
-<img src="imagens/modelo lógico.png" width="400" />
+
+<p align="center">
+<img src="/imagens/modelo conceitual.png" width="400" /> 
+<img src="/imagens/modelo lógico.png" width="400" />
 </p>
 
 ## Filme.c
