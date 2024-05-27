@@ -19,35 +19,20 @@
 #define SAIR 's'
 
 // Cores ANSI
-#define C_PINK "\033[38;5;206m"
-#define C_GREEN "\033[38;5;46m"
-#define C_ORANGE "\033[38;5;208m"
-#define C_RED "\033[38;5;196m"
-#define C_YELLOW "\033[38;5;226m"
-#define C_BLUE "\033[38;5;27m"
-#define C_MAGENTA "\033[38;5;201m"
-#define C_WHITE "\033[38;5;15m"
-#define C_GRAY "\033[38;5;242m"
-#define C_BLACK "\033[38;5;16m"
 
-// Fundo ANSI
-#define BG_PINK "\033[48;5;206m"
-#define BG_GREEN "\033[48;5;46m"
-#define BG_ORANGE "\033[48;5;208m"
-#define BG_RED "\033[48;5;196m"
-#define BG_YELLOW "\033[48;5;226m"
-#define BG_BLUE "\033[48;5;27m"
-#define BG_MAGENTA "\033[48;5;201m"
-#define BG_WHITE "\033[48;5;15m"
-#define BG_GRAY "\033[48;5;242m"
+#define C_BLUE_CUSTOM_BOLD "\033[1;38;5;21m"
+#define C_MAGENTA_BOLD "\033[1;38;5;201m"
+#define C_PURPLE_BOLD "\033[1;38;5;93m"
+#define C_GRAY "\033[38;5;242m"
+#define NEG_BRANCO "\e[0;97m"
+#define NEG_PINK "\e[0;95m"
+#define NEG_PURPLE "\e[1;35m"
 
 // Sublinhados ANSI
 #define SUB_BRANCO "\e[4;37m"
 #define SUB_PINK "\e[4;95m"
+#define C_PURPLE_BOLD_UNDERLINED "\033[1;4;38;5;93m"
 
-// Negrito ANSI
-#define NEG_BRANCO "\e[0;97m"
-#define NEG_PINK "\e[0;95m"
 
 #define UP "\u25B2"    // ▲
 #define DOWN "\u25BC"  // ▼
@@ -96,6 +81,21 @@ void sair_do_Sistema()
     getch(); // Aguarda pressionar qualquer tecla para continuar
 }
 
+int numeroDeOpcoes(int telaAtual) {
+    switch (telaAtual) {
+        case MENU_PRINCIPAL_TELA:
+            return 4; // 4 opções no menu principal
+        case MENU_FILMES_TELA:
+            return 6; // 5 opções no menu de filmes
+        case MENU_CLIENTES_TELA:
+            return 7; // 6 opções no menu de clientes
+        case MENU_LOCACAO_TELA:
+            return 12; // 11 opções no menu de locação
+        default:
+            return 0;
+    }
+}
+
 void exibirMenuPrincipal(int opcaoSelecionada)
 {
     term_cls();
@@ -106,7 +106,7 @@ void exibirMenuPrincipal(int opcaoSelecionada)
         "3 - SISTEMA DE LOCAÇÃO",
         "4 - SAIR"};
 
-    printf(NEG_PINK SUB_BRANCO "================================= BEM VINDO À LOCADORA DE FILMES ==============================" ANSI_COLOR_RESET "\n");
+    printf(SUB_BRANCO NEG_PINK "================================= BEM VINDO À LOCADORA DE FILMES ==============================\n"ANSI_COLOR_RESET);
 
     for (int i = 0; i < sizeof(opcoesMenuPrincipal) / sizeof(opcoesMenuPrincipal[0]); i++)
     {
@@ -122,7 +122,7 @@ void exibirMenuPrincipal(int opcaoSelecionada)
     }
 
     printf("\n");
-    printf(NEG_PINK "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
+    printf(NEG_PINK "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
     printf(C_GRAY "Navegue por meio das setas %s %s %s %s\n" ANSI_COLOR_RESET, UP, DOWN, LEFT, RIGHT);
 }
 
@@ -157,7 +157,7 @@ void exibirMenuFilmes(int opcaoSelecionada)
     }
 
     printf("\n");
-    printf(NEG_PINK "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
+    printf(NEG_PINK "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
     printf(C_GRAY "Navegue por meio das setas %s %s %s %s\n", UP, DOWN, LEFT, RIGHT, ANSI_COLOR_RESET);
 }
 
@@ -190,7 +190,7 @@ void exibirMenuClientes(int opcaoSelecionada)
     }
 
     printf("\n");
-    printf(NEG_PINK "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
+    printf(NEG_PINK "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
     printf(C_GRAY "Navegue por meio das setas %s %s %s %s\n", UP, DOWN, LEFT, RIGHT ANSI_COLOR_RESET);
 }
 
@@ -226,7 +226,7 @@ void exibirMenuLocacao(int opcaoSelecionada)
     }
 
     printf("\n");
-    printf(NEG_PINK "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
+    printf(NEG_PINK "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
     printf(C_GRAY "Navegue por meio das setas %s %s %s %s\n", UP, DOWN, LEFT, RIGHT ANSI_COLOR_RESET);
 }
 
@@ -245,29 +245,36 @@ int main()
 
         term_cls();
 
-        printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
-    printf("☆                                                 ☆ BEM VINDO À LOCADORA DE FILMES ☆                                   ☆\n");
-    printf("☆----------------------------------------------------------------------------------------------------------------------☆\n");
-    printf("                                 -------------------------------------------------------------,                               \n");
-    printf("                                 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [                                \n");
-    printf("                                 ------------------------------------------------------------/                                \n");
-    printf("                                 |- O -    ^^       |                  |           _   _     |                                \n");
-    printf("                                 |  |        O  ^^  |   ^^   |||||     |     ___  ( ) ( )   _/                                \n");
-    printf("                                 |         --|--    | ^^     |O=O|     |_ __/_|_|,_|___|___/                                  \n");
-    printf("                                 |~~~~~~~~~~ |~~~~~~|        ( - )  /  | `-O---O-'       |                                    \n");
-    printf("                                 |                  |       .-~~~-./   | -- -- -- -- -- /                                     \n");
-    printf("                                 |                  |      / | o |     |______________ |                                      \n");
-    printf("                                 -----------------------------------------------------_/                                      \n");
-    printf("                                 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] ['                                        \n");
-    printf("                                 ----------------------------------------------------'                                        \n");
+       printf(C_MAGENTA_BOLD" ,---------.   .---.  .---.      .-''-.           .-''-.   .-------.         ____        .-'''-.                \n");        
+       printf(" \\         \\   |   |  |_ _|    .' _ _  \\       .' _ _   \\  |  _ _    \\     .'  __ `.    / _      \\        \n");  
+       printf("  `--.  ,---'  |   |  ( ' )   /  ( ` )   '    /  ( ` )   ' | ( ' )   |    /   '  \\  \\  (`' ) /`--'            \n"); 
+       printf("     |  \\      |   '-(_{;}_) .  (_ o _)  |   .  (_ o _)  | |(_ o _) /     |___|  /  | (_ o _).                 \n"); 
+       printf("     :_ _:     |      (_,_)  |   (_,_)___|   |   (_,_)___| | (_,_).' __     _.-`    |  (_,_). '.                \n");
+       printf("     (_I_)     | _ _--.   |  '    \\   .---.   '  \\   .---. |  |\\ \\  |  | .'   _     |  .---. \\   :         " ANSI_COLOR_RESET "\n");
+       printf(C_PURPLE_BOLD"    (_(=)_)    |( ' ) |   |   \\    `-'   /    \\   `-'    / |  | \\  `'  / |   _( )_  | \\    `-'   |          \n");
+       printf("     (_I_)     (_{;}_)|   |    \\        /      \\        /  |  |  \\    /   \\ (_ o _) /  \\        /          \n");
+       printf("     '---'     '(_,_) '---'     `'-..-'         `'-..-'    ''-'   `'-'     '.(_,_).'     `-...-'                \n");
 
+       printf("                                                                                                                 \n");
 
-        system("pause");
+       printf("              ________   .-./`)   .----.      ,---.    ,----.      .-''-.      .-'''-.                           \n");
+       printf("             |        | \\ .-.')   |  ,_|      |    \\  /     |   .' _ _   \\    / _     \\                      \n");
+       printf("             |   .----'  / `-' \\ ,-./  )      |  ,  \\/   ,  |  /  ( ` )   '  (`' )/`--'                        " ANSI_COLOR_RESET "\n");
+       printf(C_BLUE_CUSTOM_BOLD"             |  _|____    `-'`'` \\   _ '`)    |  |\\ _   /|  | .  (_ o _)  | (_ o _).                           \n");
+       printf("             |_( )_   |  .---.    > (_)  )    |   _( )_/ |  | |   (_,_)___|  (_,_). '.                           \n"); 
+       printf("             (_ o._)__|  |   |   (  .  .-'    |  (_ o _) |  | '   \\   .---. .---. \\   :                        \n");
+       printf("             |(_,_)      |   |    `-'`-'|___  |   (_,_)  |  |  \\   `-'    /\\    `-'   |                        \n");
+       printf("             |   |       |   |     |        \\ |  |       |  |   \\        /  \\        /                        \n"); 
+       printf("             '---'       '---'     `--------` '--'       '--'    `'-..-'      `-...-'                            " ANSI_COLOR_RESET "\n");
+    
+        
+        printf(C_GRAY"\n                          Pressione qualquer tecla para continuar...                                            "ANSI_COLOR_RESET"\n");
         getch();
+        Sleep(1000);
 
         while (1)
         {
-            system("cls"); // Limpa a tela (use "clear" no Linux/Unix)
+            term_cls();
 
             switch (telaAtual)
             {
@@ -433,6 +440,7 @@ int main()
             }
 
             tecla = _getch();
+            int numOpcoes = numeroDeOpcoes(telaAtual);
 
             if (tecla == SAIR) {
             sair_do_Sistema();
@@ -447,13 +455,13 @@ int main()
             case UP_ARROW:
                 if (telaAtual == MENU_PRINCIPAL_TELA || telaAtual == MENU_FILMES_TELA || telaAtual == MENU_CLIENTES_TELA || telaAtual == MENU_LOCACAO_TELA)
                 {
-                    opcaoSelecionada = (opcaoSelecionada > 1) ? opcaoSelecionada - 1 : 7;
+                    opcaoSelecionada = (opcaoSelecionada > 1) ? opcaoSelecionada - 1 : numOpcoes;
                 }
                 break;
             case DOWN_ARROW:
                 if (telaAtual == MENU_PRINCIPAL_TELA || telaAtual == MENU_FILMES_TELA || telaAtual == MENU_CLIENTES_TELA || telaAtual == MENU_LOCACAO_TELA)
                 {
-                    opcaoSelecionada = (opcaoSelecionada < 11) ? opcaoSelecionada + 1 : 1;
+                    opcaoSelecionada = (opcaoSelecionada < numOpcoes) ? opcaoSelecionada + 1 : 1;
                 }
                 break;
             case LEFT_ARROW:
