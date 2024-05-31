@@ -9,6 +9,8 @@
 
 #define ANSI_COLOR_RESET "\x1b[0m"
 
+#define BRILHOS "\u2728"
+
 // teclas
 #define UP_ARROW 72
 #define DOWN_ARROW 80
@@ -27,6 +29,7 @@
 #define NEG_BRANCO "\e[0;97m"
 #define NEG_PINK "\e[0;95m"
 #define NEG_PURPLE "\e[1;35m"
+#define BG_GREEN "\e[42m"
 
 // Sublinhados ANSI
 #define SUB_BRANCO "\e[4;37m"
@@ -78,19 +81,19 @@ void sair_do_Sistema()
 {
     term_cls();
     printf("Saindo do Sistema...\n");
-    getch(); // Aguarda pressionar qualquer tecla para continuar
+    getch(); 
 }
 
 int numeroDeOpcoes(int telaAtual) {
     switch (telaAtual) {
         case MENU_PRINCIPAL_TELA:
-            return 4; // 4 opções no menu principal
+            return 4; 
         case MENU_FILMES_TELA:
-            return 6; // 5 opções no menu de filmes
+            return 6; 
         case MENU_CLIENTES_TELA:
-            return 7; // 6 opções no menu de clientes
+            return 7; 
         case MENU_LOCACAO_TELA:
-            return 12; // 11 opções no menu de locação
+            return 12; 
         default:
             return 0;
     }
@@ -106,7 +109,7 @@ void exibirMenuPrincipal(int opcaoSelecionada)
         "3 - SISTEMA DE LOCAÇÃO",
         "4 - SAIR"};
 
-    printf(SUB_BRANCO NEG_PINK "================================= BEM VINDO À LOCADORA DE FILMES ==============================\n"ANSI_COLOR_RESET);
+    printf("================================= "NEG_PURPLE" "BRILHOS" BEM VINDO À LOCADORA DE FILMES "BRILHOS" "NEG_BRANCO" ==============================\n" NEG_PINK,BRILHOS, ANSI_COLOR_RESET);
 
     for (int i = 0; i < sizeof(opcoesMenuPrincipal) / sizeof(opcoesMenuPrincipal[0]); i++)
     {
@@ -122,7 +125,7 @@ void exibirMenuPrincipal(int opcaoSelecionada)
     }
 
     printf("\n");
-    printf(NEG_PINK "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
+    printf(NEG_BRANCO "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
     printf(C_GRAY "Navegue por meio das setas %s %s %s %s\n" ANSI_COLOR_RESET, UP, DOWN, LEFT, RIGHT);
 }
 
@@ -142,7 +145,7 @@ void exibirMenuFilmes(int opcaoSelecionada)
         "5 - VOLTAR AO MENU PRINCIPAL",
         "6 - SAIR"};
 
-    printf(SUB_BRANCO NEG_PINK " ================================= MENU DE FILMES ================================= " ANSI_COLOR_RESET "\n");
+    printf(" ===================================== "NEG_PURPLE" "BRILHOS" MENU DE FILMES "BRILHOS" "NEG_BRANCO" ====================================== " ANSI_COLOR_RESET "\n");
     for (int i = 0; i < sizeof(opcoesMenuFilmes) / sizeof(opcoesMenuFilmes[0]); i++)
     {
         if (i == opcaoSelecionada - 1)
@@ -157,7 +160,7 @@ void exibirMenuFilmes(int opcaoSelecionada)
     }
 
     printf("\n");
-    printf(NEG_PINK "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
+    printf(NEG_BRANCO "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
     printf(C_GRAY "Navegue por meio das setas %s %s %s %s\n", UP, DOWN, LEFT, RIGHT, ANSI_COLOR_RESET);
 }
 
@@ -175,7 +178,7 @@ void exibirMenuClientes(int opcaoSelecionada)
         "7 - SAIR"
         };
 
-    printf(SUB_BRANCO NEG_PINK " ================================= MENU DE CLIENTES ================================= " ANSI_COLOR_RESET "\n");
+    printf(" ===================================== "NEG_PURPLE" "BRILHOS" MENU DE CLIENTES "BRILHOS" "NEG_BRANCO" ===================================== " ANSI_COLOR_RESET "\n");
     for (int i = 0; i < sizeof(opcoesMenuClientes) / sizeof(opcoesMenuClientes[0]); i++)
     {
         if (i == opcaoSelecionada - 1)
@@ -190,7 +193,7 @@ void exibirMenuClientes(int opcaoSelecionada)
     }
 
     printf("\n");
-    printf(NEG_PINK "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
+    printf( "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
     printf(C_GRAY "Navegue por meio das setas %s %s %s %s\n", UP, DOWN, LEFT, RIGHT ANSI_COLOR_RESET);
 }
 
@@ -211,7 +214,7 @@ void exibirMenuLocacao(int opcaoSelecionada)
         "10 - VOLTAR AO MENU PRINCIPAL",
         "0 - SAIR"};
 
-    printf(SUB_BRANCO NEG_PINK " ================================= MENU DE LOCAÇÃO ================================= " ANSI_COLOR_RESET "\n");
+    printf(" ===================================== "NEG_PURPLE" "BRILHOS" MENU DE LOCAÇÃO "BRILHOS" "NEG_BRANCO" ==================================== " ANSI_COLOR_RESET "\n");
     for (int i = 0; i < sizeof(opcoesMenuLocacao) / sizeof(opcoesMenuLocacao[0]); i++)
     {
         if (i == opcaoSelecionada - 1)
@@ -226,7 +229,7 @@ void exibirMenuLocacao(int opcaoSelecionada)
     }
 
     printf("\n");
-    printf(NEG_PINK "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
+    printf(NEG_BRANCO "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" ANSI_COLOR_RESET "\n");
     printf(C_GRAY "Navegue por meio das setas %s %s %s %s\n", UP, DOWN, LEFT, RIGHT ANSI_COLOR_RESET);
 }
 
@@ -292,28 +295,28 @@ int main()
                 break;
             case TELA_NOVO_FILME:
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== CADASTRANDO FILMES =====================" ANSI_COLOR_RESET "\n");
+                printf( "==================== "NEG_PURPLE" "BRILHOS" CADASTRANDO FILMES "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 filme_cadastra(listaf);
                 getch();
                 telaAtual = MENU_FILMES_TELA;
                 break;
             case TELA_EXIBIR_FILME:
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== EXIBINDO FILMES =====================" ANSI_COLOR_RESET "\n");
+                printf("==================== "NEG_PURPLE" "BRILHOS" EXIBINDO FILMES "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 listar_filme();
                 getch();
                 telaAtual = MENU_FILMES_TELA;
                 break;
             case TELA_PESQUISAR_FILME:
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== PESQUISANDO FILMES =====================" ANSI_COLOR_RESET "\n");
+                printf("==================== "NEG_PURPLE" "BRILHOS" PESQUISANDO FILMES "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 pesquisar_filme(listaf);
                 getch();
                 telaAtual = MENU_FILMES_TELA;
                 break;
             case TELA_REMOVER_FILME:
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== REMOVENDO FILMES =====================" ANSI_COLOR_RESET "\n");
+                printf( "==================== "NEG_PURPLE" "BRILHOS" REMOVENDO FILMES "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 remover_filme(listaf);
                 getch();
                 telaAtual = MENU_FILMES_TELA;
@@ -323,28 +326,28 @@ int main()
                 break;
             case TELA_NOVO_CLIENTE: 
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== CADASTRANDO CLIENTES =====================" ANSI_COLOR_RESET "\n");
+                printf("==================== "NEG_PURPLE" "BRILHOS" CADASTRANDO CLIENTES "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 cadastrar_cliente(lista);
                 getch();
                 telaAtual = MENU_CLIENTES_TELA;
                 break;
             case TELA_EXIBIR_CLIENTES:
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== EXIBINDO TODOS OS CLIENTES =====================" ANSI_COLOR_RESET "\n");
+                printf("==================== "NEG_PURPLE" "BRILHOS" EXIBINDO TODOS OS CLIENTES "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 listar_clientes(lista);
                 getch();
                 telaAtual = MENU_CLIENTES_TELA;
                 break;
             case TELA_PESQUISAR_CLIENTE:
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== PESQUISANDO CLIENTES =====================" ANSI_COLOR_RESET "\n");
+                printf("==================== "NEG_PURPLE" "BRILHOS" PESQUISANDO CLIENTES "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 pesquisar_cliente(lista);
                 getch();
                 telaAtual = MENU_CLIENTES_TELA;
                 break;
             case TELA_ALTERAR_CLIENTE:
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== ALTERANDO CLIENTES =====================" ANSI_COLOR_RESET "\n");
+                printf("==================== "NEG_PURPLE" "BRILHOS" ALTERANDO CLIENTES "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 printf("Digite o código do cliente: ");
                 fgets(codcliente, sizeof(codcliente), stdin);
                 codcliente[strcspn(codcliente, "\n")] = '\0';
@@ -354,7 +357,7 @@ int main()
                 break;
             case TELA_REMOVER_CLIENTE:
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== REMOVENDO CLIENTES =====================" ANSI_COLOR_RESET "\n");
+                printf("==================== "NEG_PURPLE" "BRILHOS" REMOVENDO CLIENTES "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 remover_cliente(lista);
                 getch();
                 telaAtual = MENU_CLIENTES_TELA;
@@ -364,42 +367,42 @@ int main()
                 break;
             case TELA_ALUGAR:
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== ALUGANDO FILMES =====================" ANSI_COLOR_RESET "\n");
+                printf("==================== "NEG_PURPLE" "BRILHOS" ALUGANDO FILMES "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 alugar_filme();
                 getch();
                 telaAtual = MENU_LOCACAO_TELA;
                 break;
             case TELA_EXIBIR_LOC:
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== EXIBINDO LOCAÇÕES =====================" ANSI_COLOR_RESET "\n");
+                printf("==================== "NEG_PURPLE" "BRILHOS" EXIBINDO LOCAÇÕES "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 exibir_locacoes();
                 getch();
                 telaAtual = MENU_LOCACAO_TELA;
                 break;
             case TELA_PESQUISAR_LOC:
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== PESQUISANDO LOCAÇÕES =====================" ANSI_COLOR_RESET "\n");
+                printf("==================== "NEG_PURPLE" "BRILHOS" PESQUISANDO LOCAÇÕES "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 pesquisar_locacao();
                 getch();
                 telaAtual = MENU_LOCACAO_TELA;
                 break;
             case TELA_PESQUISAR_HIST:
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== PESQUISANDO HISTÓRICO =====================" ANSI_COLOR_RESET "\n");
+                printf("==================== "NEG_PURPLE" "BRILHOS" PESQUISANDO HISTÓRICO "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 pesquisar_historico();
                 getch();
                 telaAtual = MENU_LOCACAO_TELA;
                 break;
             case TELA_PESQUISAR_RES:
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== PESQUISANDO RESERVAS =====================" ANSI_COLOR_RESET "\n");
+                printf("==================== "NEG_PURPLE" "BRILHOS" PESQUISANDO RESERVAS "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 pesquisar_reserva();
                 getch();
                 telaAtual = MENU_LOCACAO_TELA;
                 break;
             case TELA_DEVOLVER_FILME:
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== DEVOLVENDO O FILME =====================" ANSI_COLOR_RESET "\n");
+                printf("==================== "NEG_PURPLE" "BRILHOS" DEVOLVENDO O FILME "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 printf("Digite o código de locação: ");
                 fgets(codlocacao, sizeof(codlocacao), stdin);
                 codlocacao[strcspn(codlocacao, "\n")] = '\0';
@@ -412,21 +415,21 @@ int main()
                 break;
             case TELA_RESERVAS:
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== RESERVANDO FILME =====================" ANSI_COLOR_RESET "\n");
+                printf("==================== "NEG_PURPLE" "BRILHOS" RESERVANDO FILME "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 reservar_filme();
                 getch();
                 telaAtual = MENU_LOCACAO_TELA;
                 break;
             case TELA_REMOVER_RES:
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== REMOVENDO RESERVA =====================" ANSI_COLOR_RESET "\n");
+                printf("==================== "NEG_PURPLE" "BRILHOS" REMOVENDO RESERVA "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 remover_reserva();
                 getch();
                 telaAtual = MENU_LOCACAO_TELA;
                 break;
             case TELA_EXIBIR_RES:
                 term_cls();
-                printf(SUB_BRANCO NEG_PINK "==================== EXIBINDO RESERVAS =====================" ANSI_COLOR_RESET "\n");
+                printf("==================== "NEG_PURPLE" "BRILHOS" EXIBINDO RESERVAS "BRILHOS" "NEG_BRANCO" =====================" ANSI_COLOR_RESET "\n");
                 exibir_reservas();
                 getch();
                 telaAtual = MENU_LOCACAO_TELA;
