@@ -28,7 +28,6 @@ struct lista_filme{
 };
 
 typedef struct consulta {
-	char *propriedades[7]; // Corrigido aqui
 	char valor[100];
 } Consulta;
 
