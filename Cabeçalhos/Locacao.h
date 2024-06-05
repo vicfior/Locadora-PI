@@ -16,11 +16,6 @@ typedef struct locacao {
     struct locacao *proximo;
 } Locacao;
 
-typedef struct consulta_h {
-	char *propriedades[6]; 
-	char valor[100];
-} Consulta_h;
-
 void limpar_buffer_locacao();
 Locacao *locacao_cria();
 void inserir_locacao(Locacao **inicio, Locacao *nova_locacao);
