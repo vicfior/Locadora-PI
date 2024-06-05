@@ -438,10 +438,9 @@ void remover_locacao(char *codlocacao) {
 }
     
 void pesquisar_historico() {
-    char codcliente[20];
+    char codigo[20];
     char linha[300];
     Locacao l;
-    Consulta_h consulta_h;
     int informacao_encontrada = 0;
     FILE *arquivo = fopen("Historico.txt", "r");
     if (arquivo == NULL) {
@@ -449,11 +448,12 @@ void pesquisar_historico() {
         return;
     }
     
-    printf("Digite o código do cliente: ");
-    fgets(consulta_h.valor, sizeof(consulta_h.valor), stdin);
-    consulta_h.valor[strcspn(consulta_h.valor, "\n")] = '\0'; 
+    printf("Digite o código do cliente: \n");
+    printf(">> ");
+    fgets(codigo, sizeof(codigo), stdin);
+    codigo[strcspn(codigo, "\n")] = '\0'; 
     
-    printf("Procurando informação do cliente %s\n", consulta_h.valor);
+    printf("Procurando informação do cliente %s\n", codigo);
     
     while (fgets(linha, sizeof(linha), arquivo)) {
         if (strcmp(linha, "\n") == 0) {
@@ -471,13 +471,13 @@ void pesquisar_historico() {
         l.codfilme[strcspn(l.codfilme, "\n")] = '\0';
         l.data_devolucao[strcspn(l.data_devolucao, "\n")] = '\0';
         
-        if (strcmp(l.codcliente, consulta_h.valor) == 0) {
+        if (strcmp(l.codcliente, codigo) == 0) {
             informacao_encontrada = 1;
-            printf("%s\n", l.codcliente);
-            printf("%s\n", l.codlocacao);
-            printf("%s\n", l.codfilme);
-            printf("%s\n", l.data_devolucao);
-            printf("%.2f\n", l.valorpago);
+            printf("Código do cliente: %s\n", l.codcliente);
+            printf("Código da locação: %s\n", l.codlocacao);
+            printf("Código do filme: %s\n", l.codfilme);
+            printf("Data de devolução: %s\n", l.data_devolucao);
+            printf("Valor pago: %.2f\n", l.valorpago);
             printf("\n");
         }
     } 
@@ -562,8 +562,7 @@ void remover_reserva() {
 int pesquisar_reserva() {
     Locacao *locacao = locacao_cria();
     Locacao l;
-    Consulta_h consulta_h;
-    char codfilme[20];
+    char codigofilme[20];
     char linha[300];
     int informacao_encontrada = 0;
     FILE *arquivo = fopen("Reservas.txt", "r");
@@ -573,9 +572,9 @@ int pesquisar_reserva() {
     }
     printf("Digite o código do filme: \n");
     printf(">> ");
-    fgets(consulta_h.valor , sizeof(consulta_h.valor), stdin);
-    consulta_h.valor[strcspn(consulta_h.valor, "\n")] = '\0';
-    printf ("Procurando informação do filme %s\n", consulta_h.valor);
+    fgets(codigofilme , sizeof(codigofilme), stdin);
+    codigofilme[strcspn(codigofilme, "\n")] = '\0';
+    printf ("Procurando informação do filme %s\n", codigofilme);
 
     while (fgets(linha, sizeof(linha), arquivo) != NULL) {
         if(strcmp (linha, "\n") == 0) {
@@ -589,7 +588,7 @@ int pesquisar_reserva() {
         l.codcliente[strcspn(l.codcliente, "\n")] = '\0';
         l.data_reserva[strcspn(l.data_reserva, "\n")] = '\0';
         
-        if (strcmp(l.codfilme, consulta_h.valor) == 0) {
+        if (strcmp(l.codfilme, codigofilme) == 0) {
             informacao_encontrada = 1;
             printf("%s\n", l.codfilme);
             printf("%s\n", l.codcliente);
