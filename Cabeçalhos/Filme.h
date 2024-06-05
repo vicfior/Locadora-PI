@@ -27,10 +27,6 @@ struct lista_filme{
     Filme *fim;
 };
 
-typedef struct consulta {
-	char valor[100];
-} Consulta;
-
 void limpar_buffer();
 Lista_filme *lista_cria_filme();
 Filme *filme_cria();
