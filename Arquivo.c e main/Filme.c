@@ -159,63 +159,57 @@ void remover_filme(Lista_filme *listaf) {
 void pesquisar_filme(Lista_filme *listaf) {
     char codigo[20];
     char linha[1000];
-    Consulta consulta;
-    Filme f;
+    printf("Digite o código do filme: \n");
+    printf(">> ");
+    fgets(codigo, sizeof(codigo), stdin);
+    codigo[strcspn(codigo, "\n")] = '\0';
+
     FILE *arquivo = fopen("Filmes.txt", "r");
     if (arquivo == NULL) {
         printf("Erro ao abrir o arquivo.\n");
         return;
     }
-    printf ("digite o código do filme:");
-    limpar_buffer_filme();
-    fgets(consulta.valor, sizeof(consulta.valor), stdin);
-    consulta.valor[strcspn(consulta.valor, "\n")] = '\0';
+
     Filme filme;
-    int encontrou_filme = 0;
-    printf ("código do filme: %s\n", codigo);
+    int encontrou = 0;
 
     while (fgets(linha, sizeof(linha), arquivo)) {
-        if (strcmp(linha, "\n") == 0) {
-            continue;
-        }
+        if (sscanf(linha, "%s", filme.codfilme) == 1) {
+            fgets(filme.titulo, sizeof(filme.titulo), arquivo);
+            fgets(filme.ator_principal, sizeof(filme.ator_principal), arquivo);
+            fgets(filme.ator_coadjuvante, sizeof(filme.ator_coadjuvante), arquivo);
+            fgets(filme.ano, sizeof(filme.ano), arquivo);
+            fgets(filme.diretor, sizeof(filme.diretor), arquivo);
+            fgets(filme.genero, sizeof(filme.genero), arquivo);
 
-        sscanf(linha, "%[^\n]", f.codfilme);
+            filme.titulo[strcspn(filme.titulo, "\n")] = '\0';
+            filme.ator_principal[strcspn(filme.ator_principal, "\n")] = '\0';
+            filme.ator_coadjuvante[strcspn(filme.ator_coadjuvante, "\n")] = '\0';
+            filme.ano[strcspn(filme.ano, "\n")] = '\0';
+            filme.diretor[strcspn(filme.diretor, "\n")] = '\0';
+            filme.genero[strcspn(filme.genero, "\n")] = '\0';
 
-        fgets(f.titulo, sizeof(f.titulo), arquivo);
-        fgets(f.ator_principal, sizeof(f.ator_principal), arquivo);
-        fgets(f.ator_coadjuvante, sizeof(f.ator_coadjuvante), arquivo);
-        fgets(f.ano, sizeof(f.ano), arquivo);
-        fgets(f.diretor, sizeof(f.diretor), arquivo);
-        fgets(f.genero, sizeof(f.genero), arquivo);
-
-        f.codfilme[strcspn(f.codfilme, "\n")] = '\0';
-        f.titulo[strcspn(f.titulo, "\n")] = '\0';
-        f.ator_principal[strcspn(f.ator_principal, "\n")] = '\0';
-        f.ator_coadjuvante[strcspn(f.ator_coadjuvante, "\n")] = '\0';
-        f.ano[strcspn(f.ano, "\n")] = '\0';
-        f.diretor[strcspn(f.diretor, "\n")] = '\0';
-        f.genero[strcspn(f.genero, "\n")] = '\0';
-
-        if (strcmp(f.codfilme, consulta.valor) == 0) {
-            encontrou_filme = 1;
-            printf("filme encontrado!\n");
-            printf("Código: %s\n", f.codfilme);
-            printf("titulo: %s\n", f.titulo);
-            printf("ator_principal: %s\n", f.ator_principal);
-            printf("ator_coadjuvante: %s\n", f.ator_coadjuvante);
-            printf("ano: %s\n", f.ano);
-            printf("diretor: %s\n", f.diretor);
-            printf("genero: %s\n", f.genero);
-            break;
-                 }
+            if (strcmp(filme.codfilme, codigo) == 0) {
+                printf("Filme encontrado!\n");
+                printf("\n");
+                printf("------------------ Informações do Filme %s -----------------------------\n", filme.codfilme);
+                printf("                   Código: %s\n", filme.codfilme);
+                printf("                   Título: %s\n", filme.titulo);
+                printf("                   Ator principal: %s\n", filme.ator_principal);
+                printf("                   Ator coadjuvante: %s\n", filme.ator_coadjuvante);
+                printf("                   Ano: %s\n", filme.ano);
+                printf("                   Diretor: %s\n", filme.diretor);
+                printf("                   Gênero: %s\n", filme.genero);
+                printf("------------------------------------------------------------------------------\n");
+                encontrou = 1;
+                break;
             }
-
-        if (!encontrou_filme) {
-            printf("filme não encontrado.\n");
         }
-
-    fclose(arquivo);
-    return;
+    }  
+    if (!encontrou) {
+        printf("Filme não encontrado.\n");
+    }
+    fclose(arquivo);   
 }
 
 
