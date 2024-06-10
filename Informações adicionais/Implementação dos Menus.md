@@ -18,3 +18,6 @@ No menu dos clientes o usuário pode escolher entre 5 opções de gerenciamento 
 ### Tela Menu de Locação
 O menu de locação é o que oferece maior número de opções ao usuário, uma vez que é o sistema de gerenciamento da locadora propriamente dito. Nele é possível alugar filmes, fazer devolução, aplicar multas, reservar filmes e etc, além de voltar ao menu principal e sair do sistema. 
 
+# Menu básico
+
+Em primeira opção foi feito um menu mais básico não só para testar as funções mas também para dar uma possibilidade de utilização do código em outros sistemas além do Windows. Este menu necessita que o usuário insira suas escolhas conforme as opções disponíveis no terminal, porém não afeta em nada a usabilidade do sistema ou até mesmo a beleza da interface. Além disso, é um menu menos complexo, podendo ser replicado facilmente por iniciantes. 
