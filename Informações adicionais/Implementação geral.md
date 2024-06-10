@@ -31,4 +31,4 @@ _Para uma explicação mais detalhada das funções, acesse_ [Implementação de
 
 O Menu foi implementado utilizando as bibliotecas ```conio.h``` e ```windows.h``` que possibilitaram a criação de um menu interativo por meio do teclado, evitando a necessidade de o usuário digitar uma opção de escolha. No entanto, não foi feito uma opção de menu interativo para sistemas Unix, de forma que ele apenas funciona em sistemas operacionais Windows. De forma alternativa, em primeira opção foi criado um menu mais simples que funciona em qualquer sistema operacional. 
 
-_Para uma explicação mais detalhada das funções, acesse_ 
+_Para uma explicação mais detalhada das funções, acesse_ [Implementação dos Menus](https://github.com/vicfior/Locadora-PI/blob/91c43e619b9f330d9281ac1b292a25518218e24f/Informa%C3%A7%C3%B5es%20adicionais/Implementa%C3%A7%C3%A3o%20dos%20Menus.md)
