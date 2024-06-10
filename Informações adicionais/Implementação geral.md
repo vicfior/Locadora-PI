@@ -26,3 +26,9 @@ Arquivo destinado para a incorporação das operações sobre os dados das loca�
 Os dados de todas essas operações também ficam salvos nos seguintes arquivos: Locacao.txt, Reservas.txt e Historico.txt.
 
 _Para uma explicação mais detalhada das funções, acesse_ [Implementação de Locacao.c](https://github.com/vicfior/Locadora-PI/blob/a82a4c47c34afc67e7b751dc3fcb7315021070f2/Informa%C3%A7%C3%B5es%20adicionais/Implementa%C3%A7%C3%A3o%20Locacao.md)
+
+# Menu
+
+O Menu foi implementado utilizando as bibliotecas ```conio.h``` e ```windows.h``` que possibilitaram a criação de um menu interativo por meio do teclado, evitando a necessidade de o usuário digitar uma opção de escolha. No entanto, não foi feito uma opção de menu interativo para sistemas Unix, de forma que ele apenas funciona em sistemas operacionais Windows. De forma alternativa, em primeira opção foi criado um menu mais simples que funciona em qualquer sistema operacional. 
+
+_Para uma explicação mais detalhada das funções, acesse_ 
