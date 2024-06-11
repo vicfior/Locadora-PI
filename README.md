@@ -6,12 +6,24 @@ Esse projeto foi desenvolvido como parte da disciplina Projeto Integrador relaci
 
 ## :busts_in_silhouette: Integrantes
 
-| Nome          |     GitHub                                        |
-| ------------- | --------------------------------------------------|
-| Victória Fior | [vicfior](https://github.com/vicfior)             |
-| Danielle Lima | [DLS404](https://github.com/DLS404)               |
-| Bianca Barros | [Bianca-Barros](https://github.com/Bianca-Barros) |
-
+<table align="center">
+  <tr>
+    <th>Nome</th>
+    <th>GitHub</th>
+  </tr>
+  <tr>
+    <td> Victória Fior</td>
+    <td><a href="https://github.com/vicfior">Vicfior</a></td>
+  </tr>
+  <tr>
+    <td> Danielle Lima</td>
+    <td><a href="https://github.com/DLS404">DLS404</a></td>
+  </tr>
+  <tr>
+    <td> Bianca Barros</td>
+    <td><a href="https://github.com/Bianca-Barros">Bianca-Barros</a></td>
+  </tr>
+</table>
 
 ## :clamp: Tecnologias usadas
 * Linguagem de programação: **C**
