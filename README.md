@@ -29,3 +29,6 @@ Depois rode o seguinte comando:
 ## :white_check_mark: Requisitos
 * Um compilador para compilar o projeto em C (ex.: [Mingw](https://www.mingw-w64.org/))
 * Uma IDE para abrir o projeto
+
+> [!NOTE]
+> Para informações mais detalhadas acesse o diretório de Informações adicionais ou clique aqui: [Implementação geral](https://github.com/vicfior/Locadora-PI/blob/c9ad50c8b800b0079fdbd74ca053323ef3605462/Informa%C3%A7%C3%B5es%20adicionais/Implementa%C3%A7%C3%A3o%20geral.md)
