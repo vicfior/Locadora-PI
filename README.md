@@ -4,7 +4,7 @@ Esse projeto foi desenvolvido como parte da disciplina Projeto Integrador relaci
 
 <!-- Adicionar imagens do projeto -->
 
-## Integrantes
+## :busts_in_silhouette: Integrantes
 
 | Nome          |     GitHub                                        |
 | ------------- | --------------------------------------------------|
@@ -13,10 +13,10 @@ Esse projeto foi desenvolvido como parte da disciplina Projeto Integrador relaci
 | Bianca Barros | [Bianca-Barros](https://github.com/Bianca-Barros) |
 
 
-## Tecnologias usadas
+## :clamp: Tecnologias usadas
 * Linguagem de programação: **C**
 
-## 	:grey_question: Como rodar o projeto 
+## 	:question: Como rodar o projeto 
 
 Caso nunca tenha usado um programa em C, baixe todos os arquivos.c e os arquivos.h, abra-os em sua IDE de preferência e use os seguintes comandos para compilar e executar esse código:
 ```
