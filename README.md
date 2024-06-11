@@ -4,6 +4,7 @@ Esse projeto foi desenvolvido como parte da disciplina Projeto Integrador relaci
 
 <p align="center">
 <img src="https://github.com/vicfior/Locadora-PI/blob/38e524680e3809d75866ce66021a648cf3472e2d/imagens/capa-menu.png" alt="Tela inicial" width="300" />
+<img src="https://github.com/vicfior/Locadora-PI/blob/ee233e9f1f23088c137a3329a3c2a9d01d286cbd/imagens/codigo.png" alt="Tela inicial" width="300" />
 <img src="https://github.com/vicfior/Locadora-PI/blob/38e524680e3809d75866ce66021a648cf3472e2d/imagens/menu-locacao.png" alt="Tela inicial" width="400" />
 </p>
 
