@@ -1,9 +1,6 @@
 #ifndef TERMINAL_H
 #define TERMINAL_H 1
 
-
-#define ANSI_COLOR_RESET "\x1b[0m"
-
 #define BRILHOS "\u2728"
 
 // teclas
@@ -16,7 +13,6 @@
 #define SAIR 's'
 
 // Cores ANSI
-
 #define C_BLUE_CUSTOM_BOLD "\033[1;38;5;21m"
 #define C_MAGENTA_BOLD "\033[1;38;5;201m"
 #define C_PURPLE_BOLD "\033[1;38;5;93m"
@@ -24,7 +20,7 @@
 #define NEG_BRANCO "\e[0;97m"
 #define NEG_PINK "\e[0;95m"
 #define NEG_PURPLE "\e[1;35m"
-#define BG_GREEN "\e[42m"
+#define ANSI_COLOR_RESET "\x1b[0m"
 
 // Sublinhados ANSI
 #define SUB_BRANCO "\e[4;37m"
