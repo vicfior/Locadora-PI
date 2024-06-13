@@ -1,6 +1,6 @@
 # Menu Interativo
 
-O menu interativo foi feito utilizando as bibliotecas ```conio.h``` e ```windows.h```. Todas as cores do menu, os caracteres em negrito, sublinhados e emojis foram feitos utilizando macros com códigos de cores ANSI, que controlam a aparência do texto no terminal. A organização do menu interativo foi feita por meio de telas conforme figura abaixo: 
+O menu interativo foi feito utilizando as bibliotecas ```conio.h``` e ```windows.h```. Todas as cores do menu, os caracteres em negrito, sublinhados e emojis foram feitos utilizando macros com códigos de cores ANSI, que controlam a aparência do texto no terminal (_para mais informações técnicas sobre como o menu foi implementado, acesse [Implementação Terminal](https://github.com/vicfior/Locadora-PI/blob/961d17042fc51e572774ae5ff0384872ed7401a1/Informa%C3%A7%C3%B5es%20adicionais/Implementa%C3%A7%C3%A3o%20Terminal.md)_). A organização do menu interativo foi feita por meio de telas conforme figura abaixo: 
 
 <p align="center">
 <img src="https://github.com/vicfior/Locadora-PI/blob/d676b05bf2acdb8c8bce1393dcc4724feb24e123/imagens/Diagrama%20das%20telas.png" alt="Diagrama das telas" width="400">
