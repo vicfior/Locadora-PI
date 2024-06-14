@@ -46,7 +46,7 @@ O menu de locação é o que oferece maior número de opções ao usuário, uma 
 Em primeira opção foi feito um menu mais básico não só para testar as funções mas também para dar uma possibilidade de utilização do código em outros sistemas além do Windows. Este menu necessita que o usuário insira suas escolhas conforme as opções disponíveis no terminal, porém não afeta em nada a usabilidade do sistema ou até mesmo a beleza da interface. Além disso, é um menu menos complexo, podendo ser replicado facilmente por iniciantes. 
 
 <p align="center">
-<img src="https://github.com/vicfior/Locadora-PI/blob/72876371ddaba4a0e7fc7bb124af89c6adb97902/imagens/menu%20inicial%20b%C3%A1sico.png" alt="Menu básico" width="500">
+<img src="https://github.com/vicfior/Locadora-PI/blob/79ffe92a88a2f1f771b5812e4b8f35531020c672/imagens/menu%20principal%20b%C3%A1sico.png" alt="Menu básico" width="500">
 </p>
 <p align="center">
 <img src="https://github.com/vicfior/Locadora-PI/blob/72876371ddaba4a0e7fc7bb124af89c6adb97902/imagens/Menu%20filmes%20b%C3%A1sico.png" alt="Menu de filmes" width="500">
