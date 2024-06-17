@@ -465,7 +465,6 @@ void pesquisar_historico() {
         fgets(l.data_devolucao, sizeof(l.data_devolucao), arquivo);
         fscanf(arquivo, "%lf", &l.valorpago);
         
-        // Remove newline characters from the strings
         l.codlocacao[strcspn(l.codlocacao, "\n")] = '\0';
         l.codcliente[strcspn(l.codcliente, "\n")] = '\0';
         l.codfilme[strcspn(l.codfilme, "\n")] = '\0';
