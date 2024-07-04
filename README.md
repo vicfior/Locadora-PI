@@ -8,27 +8,6 @@ Esse projeto foi desenvolvido como parte da disciplina Projeto Integrador relaci
 <img src="https://github.com/vicfior/Locadora-PI/blob/38e524680e3809d75866ce66021a648cf3472e2d/imagens/menu-locacao.png" alt="Tela inicial" width="400" />
 </p>
 
-## :busts_in_silhouette: Integrantes
-
-<table align="center">
-  <tr>
-    <th>Nome</th>
-    <th>GitHub</th>
-  </tr>
-  <tr>
-    <td> Victória Fior</td>
-    <td><a href="https://github.com/vicfior">Vicfior</a></td>
-  </tr>
-  <tr>
-    <td> Danielle Lima</td>
-    <td><a href="https://github.com/DLS404">DLS404</a></td>
-  </tr>
-  <tr>
-    <td> Bianca Barros</td>
-    <td><a href="https://github.com/Bianca-Barros">Bianca-Barros</a></td>
-  </tr>
-</table>
-
 ## :clamp: Tecnologias usadas
 * Linguagem de programação: **C**
 
